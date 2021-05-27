@@ -1,0 +1,36 @@
+{
+  "name": "sveltekit-demo",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "format": "prettier --write --plugin-search-dir=. ."
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "next",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "prettier": "~2.2.1",
+    "prettier-plugin-svelte": "^2.2.0",
+    "svelte": "^3.34.0",
+    "svelte-preprocess": "^4.7.1",
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0",
+    "autoprefixer": "^10.2.5",
+    "cssnano": "^5.0.1",
+    "postcss": "^8.2.10",
+    "postcss-load-config": "^3.0.1",
+    "tailwindcss": "^2.1.1"
+  },
+  "type": "module",
+  "description": "Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);",
+  "main": "svelte.config.js",
+  "dependencies": {},
+  "author": "Tarun Kumar Sukhu",
+  "license": "ISC"
+}
