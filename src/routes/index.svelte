@@ -29,23 +29,62 @@
 	<title>Welcome</title>
 </svelte:head>
 
-<div>
-	<h2>Hello and welcome to my site!</h2>
-	<div>
-		{status}
-		<button on:click={archiveCompleted}>Archive Completed</button>
-	</div>
-	<form on:submit|preventDefault={addTodo}>
-		<input type="text" size="30" placeholder="enter a new todo" bind:value={todoText} />
-		<button disabled={!todoText}>Add</button>
-	</form>
-	<ul>
-		{#each todos as todo}
-			<Todo
-				{todo}
-				on:delete={() => deleteTodo(todo.id)}
-				on:toggleDone={() => toggleDone(todo.id)}
+<div class="flex justify-center align-middle items-center">
+	<div class="p-4 m-2 border border-gray-200 rounded shadow">
+		<h2 class="font-bold text-center align-middle text-gray-800">To Do App</h2>
+		<div class="italic text-xs flex justify-start align-middle items-center">
+			<div class="flex-1 px-2 py-3">{status}</div>
+			<button
+				on:click={archiveCompleted}
+				type="button"
+				class="inline-flex  items-center justify-center px-5 py-3 border border-indigo-200 text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
+				><svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-5 w-5"
+					viewBox="0 0 20 20"
+					fill="currentColor"
+				>
+					<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+					<path
+						fill-rule="evenodd"
+						d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+						clip-rule="evenodd"
+					/>
+				</svg></button
+			>
+		</div>
+		<form on:submit|preventDefault={addTodo} class="mt-1 flex justify-between align-middle items-center">
+			<input
+				type="text"
+				placeholder="enter a new todo"
+				bind:value={todoText}
+				class="px-2 py-3 w-80 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
 			/>
-		{/each}
-	</ul>
+			<button
+				disabled={!todoText}
+				class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+				><svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-5 w-5"
+					viewBox="0 0 20 20"
+					fill="currentColor"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+						clip-rule="evenodd"
+					/>
+				</svg></button
+			>
+		</form>
+		<ul class="flex flex-col justify-between align-middle items-left">
+			{#each todos as todo}
+				<Todo
+					{todo}
+					on:delete={() => deleteTodo(todo.id)}
+					on:toggleDone={() => toggleDone(todo.id)}
+				/>
+			{/each}
+		</ul>
+	</div>
 </div>

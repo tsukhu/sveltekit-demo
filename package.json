@@ -30,7 +30,9 @@
   "type": "module",
   "description": "Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);",
   "main": "svelte.config.js",
-  "dependencies": {},
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.2"
+  },
   "author": "Tarun Kumar Sukhu",
   "license": "ISC"
 }
