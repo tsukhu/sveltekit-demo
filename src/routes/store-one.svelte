@@ -1,5 +1,5 @@
 <script type="ts">
-	import Todo from '$lib/Todo.svelte';
+	import SimpleStore from '$lib/SimpleStore.svelte';
 </script>
 
 <svelte:head>
@@ -8,6 +8,6 @@
 
 <div class="flex justify-center align-middle items-center">
 	<div class="p-4 m-2 border border-gray-200 rounded shadow">
-		<Todo />
+		<SimpleStore />
 	</div>
 </div>

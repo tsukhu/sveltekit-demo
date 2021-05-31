@@ -1,8 +1,9 @@
 <script>
 	import { page } from '$app/stores';
 	const routes = [
-		{ href: '/', name: 'Todo Application' },
-		{ href: '/sample2', name: 'Sample 2' }
+		{ href: '/', name: 'Todo App' },
+		{ href: '/loan', name: 'Loan App' },
+		{ href: '/store-one', name: 'Store1 App' },
 	];
 </script>
 
@@ -88,14 +89,14 @@
 					</div>
 				</div>
 			</div>
-			<footer class="p-2 bg-white flex text-gray-600 text-xs align-middle items-center justify-between shadow-sm border-t border-gray-100">
+			<footer
+				class="p-2 bg-white flex text-gray-600 text-xs align-middle items-center justify-between shadow-sm border-t border-gray-100"
+			>
 				<div>tsukhu@github</div>
 				<div>Powered by SvelteKit</div>
-
 			</footer>
 		</div>
 	</div>
-
 </div>
 
 <style global lang="postcss">
