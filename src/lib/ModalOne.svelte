@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher, onDestroy } from 'svelte';
-
+	import { fade } from 'svelte/transition';
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
 
@@ -39,6 +39,7 @@
 
 <svelte:window on:keydown={handle_keydown} />
 <div
+	transition:fade
 	class="fixed z-10 inset-0 overflow-y-auto"
 	aria-labelledby="modal-title"
 	role="dialog"
