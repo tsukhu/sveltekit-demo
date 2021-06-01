@@ -1,10 +1,13 @@
 <script>
 	import { page } from '$app/stores';
+	import Tooltip from '$lib/Tooltip.svelte';
+	import { tooltip } from '../actions/tooltip';
 	const routes = [
-		{ href: '/', name: 'Todo App' },
-		{ href: '/loan', name: 'Loan App' },
-		{ href: '/store-one', name: 'Counter Store' },
-		{ href: '/album', name: 'Photos' },
+		{ href: '/', name: 'Todo App', tooltip: 'Todo' },
+		{ href: '/loan', name: 'Loan App', tooltip: 'Loan' },
+		{ href: '/store-one', name: 'Counter Store', tooltip: 'Counter with Store' },
+		{ href: '/album', name: 'Photos', tooltip: 'Photos App' },
+		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 	];
 </script>
 
@@ -20,7 +23,10 @@
 						class="flex flex-col flex-wrap align-middle items-left text-sm font-semibold justify-around mx-2"
 					>
 						{#each routes as route}
-							<li class="mb-4 text-center">
+							<li
+								class="mb-4 text-center relative"
+								use:tooltip={{ content: Tooltip, text: route.tooltip }}
+							>
 								<a href={route.href}>
 									<div
 										class={`px-0 sm:px-4 py-1 rounded ${
