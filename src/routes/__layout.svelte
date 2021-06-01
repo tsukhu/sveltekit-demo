@@ -3,16 +3,17 @@
 	const routes = [
 		{ href: '/', name: 'Todo App' },
 		{ href: '/loan', name: 'Loan App' },
-		{ href: '/store-one', name: 'Store1 App' },
+		{ href: '/store-one', name: 'Counter Store' },
+		{ href: '/album', name: 'Photos' },
 	];
 </script>
 
 <!-- component -->
 <!-- This is an example component -->
 <div class="flex flex-col h-screen justify-between">
-	<div class="flex flex-row h-full">
+	<div class="flex flex-row flex-1">
 		<!-- Sidebar -->
-		<nav class="bg-gray-900 w-2/12 justify-between flex flex-col h-screen">
+		<nav class="bg-gray-900 w-2/12 justify-between flex flex-col h-full">
 			<div class="mt-10 mb-10">
 				<div class="mt-10">
 					<ul
@@ -22,7 +23,7 @@
 							<li class="mb-4 text-center">
 								<a href={route.href}>
 									<div
-										class={`px-4 py-1 rounded ${
+										class={`px-0 sm:px-4 py-1 rounded ${
 											route.href === $page.path
 												? 'bg-green-500 hover:bg-green-700 text-white'
 												: 'bg-gray-800 hover:text-green-500 text-gray-400'
