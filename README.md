@@ -22,7 +22,3 @@ npm run build
 ```
 
 > You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
-
-## Inspiration
-
-This apply learnings from the Svelte community specially [Mark Volkmann, Svelte: Web App Development Reimagined video](https://www.youtube.com/watch?v=eEcQpNQc940)
