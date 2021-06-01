@@ -1,7 +1,3 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script type="ts">
 	import PhotoAlbum from '$lib/PhotoAlbum.svelte';
 </script>
