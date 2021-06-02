@@ -55,7 +55,7 @@
 		type="text"
 		placeholder="enter a new todo"
 		bind:value={todoText}
-		class="px-2 py-3 w-80 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
+		class="px-2 py-3 w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
 	/>
 	<button
 		disabled={!todoText}
