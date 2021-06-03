@@ -15,9 +15,9 @@ export async function initFirebase() {
 		return firebaseMain;
 	}
 
-	const module = await import('firebase/app/dist/index.esm');
+	const module = await import('firebase/app');
 	const firebase = module.default;
-	await Promise.all([import('firebase/auth/dist/index.esm')]);
+	await Promise.all([import('firebase/auth')]);
 
 	const config = {
 		apiKey: FIREBASE_API_KEY,
