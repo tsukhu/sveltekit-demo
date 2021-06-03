@@ -12,7 +12,9 @@ export function tooltip(node, options) {
 	}
 
 	function removeTooltip() {
-		component.$destroy();
+		if (component) {
+			component.$destroy();
+		}
 	}
 
 	return {

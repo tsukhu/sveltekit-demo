@@ -2,7 +2,9 @@
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
+	import '../auth';
 	let showProfile = false;
+	let user = false;
 	const routes = [
 		{ href: '/', name: 'Todo App', tooltip: 'Todo' },
 		{ href: '/loan', name: 'Loan App', tooltip: 'Loan' },
@@ -26,12 +28,12 @@
 					>
 						{#each routes as route}
 							<li
-								class="mb-4 text-center relative"
+								class="mb-4 text-center relative "
 								use:tooltip={{ content: Tooltip, text: route.tooltip }}
 							>
 								<a href={route.href}>
 									<div
-										class={`px-0 sm:px-4 py-1 rounded ${
+										class={`text-xs md:text-sm px-0 sm:px-4 py-1 rounded ${
 											route.href === $page.path
 												? 'bg-green-500 hover:bg-green-700 text-white'
 												: 'bg-gray-800 hover:text-green-500 text-gray-400'
@@ -94,34 +96,43 @@
 					</div>
 					<!-- Profile dropdown -->
 					<div class="ml-3 relative hidden md:block">
-						<div>
-							<button
-								type="button"
-								class="max-w-xs bg-gray-800 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
-								id="user-menu-button"
-								aria-expanded="false"
-								aria-haspopup="true"
-								on:click={() => (showProfile = !showProfile)}
-							>
-								<span class="sr-only">Open user menu</span>
-								<img
-									class="h-8 w-8 rounded-full"
-									src="https://ui-avatars.com/api/?font-size=0.33&background=ff3e00&color=fff&name=Svelte Kit"
-									alt=""
-								/>
-							</button>
-						</div>
-
-						<!--
-						  Dropdown menu, show/hide based on menu state.
-		  
-						  Entering: "transition ease-out duration-100"
-							From: "transform opacity-0 scale-95"
-							To: "transform opacity-100 scale-100"
-						  Leaving: "transition ease-in duration-75"
-							From: "transform opacity-100 scale-100"
-							To: "transform opacity-0 scale-95"
-						-->
+						{#if user}
+							<div>
+								<button
+									type="button"
+									class="max-w-xs bg-gray-800 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
+									id="user-menu-button"
+									aria-expanded="false"
+									aria-haspopup="true"
+									on:click={() => (showProfile = !showProfile)}
+								>
+									<span class="sr-only">Open user menu</span>
+									<img
+										class="h-8 w-8 rounded-full"
+										src="https://ui-avatars.com/api/?font-size=0.33&background=ff3e00&color=fff&name=Svelte Kit"
+										alt=""
+									/>
+								</button>
+							</div>
+						{:else}
+							<div>
+								<button
+									type="button"
+									class="max-w-xs bg-green-200 border rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
+									id="user-menu-button"
+									aria-expanded="false"
+									aria-haspopup="true"
+									on:click={() => console.log('login')}
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
+										><path fill="none" d="M0 0h24v24H0z" /><path
+											d="M10 11V8l5 4-5 4v-3H1v-2h9zm-7.542 4h2.124A8.003 8.003 0 0 0 20 12 8 8 0 0 0 4.582 9H2.458C3.732 4.943 7.522 2 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-4.478 0-8.268-2.943-9.542-7z"
+											fill="#000"
+										/></svg
+									>
+								</button>
+							</div>
+						{/if}
 						{#if showProfile}
 							<div
 								class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -140,59 +151,78 @@
 							</div>
 						{/if}
 					</div>
-
-					<div class="-mr-2 flex md:hidden">
-						<!-- Mobile menu button -->
-						<button
-							type="button"
-							class="bg-gray-800 relative inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-							aria-controls="mobile-menu"
-							aria-expanded="false"
-							on:click={() => (showProfile = !showProfile)}
-						>
-							<span class="sr-only">Open main menu</span>
-							<!--
+					{#if user}
+						<div class="-mr-2 flex md:hidden">
+							<!-- Mobile menu button -->
+							<button
+								type="button"
+								class="bg-gray-800 relative inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+								aria-controls="mobile-menu"
+								aria-expanded="false"
+								on:click={() => (showProfile = !showProfile)}
+							>
+								<span class="sr-only">Open main menu</span>
+								<!--
 							Heroicon name: outline/menu
 			  
 							Menu open: "hidden", Menu closed: "block"
 						  -->
-							<svg
-								class="block h-6 w-6"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M4 6h16M4 12h16M4 18h16"
-								/>
-							</svg>
-							<!--
+								<svg
+									class="block h-6 w-6"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 6h16M4 12h16M4 18h16"
+									/>
+								</svg>
+								<!--
 							Heroicon name: outline/x
 			  
 							Menu open: "block", Menu closed: "hidden"
 						  -->
-							<svg
-								class="hidden h-6 w-6"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								aria-hidden="true"
+								<svg
+									class="hidden h-6 w-6"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M6 18L18 6M6 6l12 12"
+									/>
+								</svg>
+							</button>
+						</div>
+					{:else}
+						<div class="-mr-2 flex md:hidden">
+							<button
+								type="button"
+								class="max-w-xs bg-green-200 border rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
+								id="user-menu-button"
+								aria-expanded="false"
+								aria-haspopup="true"
+								on:click={() => console.log('login')}
 							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M6 18L18 6M6 6l12 12"
-								/>
-							</svg>
-						</button>
-					</div>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
+									><path fill="none" d="M0 0h24v24H0z" /><path
+										d="M10 11V8l5 4-5 4v-3H1v-2h9zm-7.542 4h2.124A8.003 8.003 0 0 0 20 12 8 8 0 0 0 4.582 9H2.458C3.732 4.943 7.522 2 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-4.478 0-8.268-2.943-9.542-7z"
+										fill="#000"
+									/></svg
+								>
+							</button>
+						</div>
+					{/if}
 				</div>
 			</div>
 			<!-- Mobile menu, show/hide based on menu state. -->
