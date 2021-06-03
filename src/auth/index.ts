@@ -6,7 +6,6 @@ import {
 	FIREBASE_PROJECT_ID,
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
-import firebase from 'firebase/app';
 import { browser } from '$app/env';
 
 const firebaseConfig = {
@@ -18,13 +17,17 @@ const firebaseConfig = {
 	appId: FIREBASE_APP_ID
 };
 
-let initFirebase = null;
+let firebase = null;
 
 export const init = async () => {
 	if (browser) {
-		if (!initFirebase) {
-			(await import('firebase/auth')).default;
-			initFirebase = firebase.initializeApp(firebaseConfig);
+		if (!firebase) {
+			const module = await import('firebase/app');
+			await import('firebase/auth');
+
+			firebase = module.default;
+
+			firebase.initializeApp(firebaseConfig);
 		}
 	}
 };
