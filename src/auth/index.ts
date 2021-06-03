@@ -7,24 +7,23 @@ import {
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
 
-const firebaseConfig = {
-	apiKey: FIREBASE_API_KEY,
-	authDomain: FIREBASE_AUTH_DOMAIN,
-	projectId: FIREBASE_PROJECT_ID,
-	storageBucket: FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
-	appId: FIREBASE_APP_ID
-};
+export const initFirebase = async () => {
+	const module = await import('firebase/app');
+	const firebase = module.default;
+	await Promise.all([import('firebase/auth')]);
 
-let firebase = null;
+	const config = {
+		apiKey: FIREBASE_API_KEY,
+		authDomain: FIREBASE_AUTH_DOMAIN,
+		projectId: FIREBASE_PROJECT_ID,
+		storageBucket: FIREBASE_STORAGE_BUCKET,
+		messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+		appId: FIREBASE_APP_ID
+	};
 
-export const init = async () => {
-	if (firebase !== null) {
-		const module = await import('firebase/app');
-		await import('firebase/auth');
-
-		firebase = module.default;
-
-		firebase.initializeApp(firebaseConfig);
+	if (!firebase.apps.length) {
+		firebase.initializeApp(config);
 	}
+
+	return firebase;
 };

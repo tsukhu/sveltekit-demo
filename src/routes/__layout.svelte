@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import { init } from '../auth';
+	import { initFirebase } from '../auth';
 	let showProfile = false;
 	let user = false;
 	const routes = [
@@ -16,7 +16,8 @@
 	];
 
 	onMount(async () => {
-		await init();
+		const fb = await initFirebase();
+		console.log(fb);
 	});
 </script>
 
