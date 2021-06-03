@@ -34,7 +34,7 @@
   "main": "svelte.config.js",
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
-    "firebase": "^8.6.3"
+    "firebase": "^9.0.0-beta.2"
   },
   "author": "Tarun Kumar Sukhu",
   "license": "ISC"

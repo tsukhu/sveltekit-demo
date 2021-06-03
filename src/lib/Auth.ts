@@ -6,6 +6,11 @@ import {
 	FIREBASE_PROJECT_ID,
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import { initializeApp } from 'firebase/app';
+
+// Add the Firebase products that you want to use
+// import { getAuth } from 'firebase/auth';
 
 let firebaseMain = null;
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -14,8 +19,9 @@ export async function initFirebase() {
 		return firebaseMain;
 	}
 
-	const module = await import('firebase');
-	const firebase = module.default;
+	//	const module = await import('firebase/app');
+	//	const firebase = module.default;
+	//	await Promise.all([import('firebase/auth')]);
 
 	const config = {
 		apiKey: FIREBASE_API_KEY,
@@ -26,9 +32,7 @@ export async function initFirebase() {
 		appId: FIREBASE_APP_ID
 	};
 
-	if (!firebase.apps.length) {
-		firebase.initializeApp(config);
-	}
-	firebaseMain = firebase;
-	return firebase;
+	firebaseMain = initializeApp(config);
+
+	return firebaseMain;
 }
