@@ -16,4 +16,11 @@ const firebaseConfig = {
 	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
 	appId: FIREBASE_APP_ID
 };
-firebase.initializeApp(firebaseConfig);
+
+let initFirebase = null;
+
+export const init = (): void => {
+	if (!initFirebase) {
+		initFirebase = firebase.initializeApp(firebaseConfig);
+	}
+};

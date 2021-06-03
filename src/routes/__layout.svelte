@@ -1,8 +1,9 @@
 <script>
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import '../auth';
+	import { init } from '../auth';
 	let showProfile = false;
 	let user = false;
 	const routes = [
@@ -13,6 +14,10 @@
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
 	];
+
+	onMount(() => {
+		init();
+	});
 </script>
 
 <!-- component -->
