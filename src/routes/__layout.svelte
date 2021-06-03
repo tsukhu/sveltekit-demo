@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import { initFirebase } from '../auth/__auth';
+	import { initFirebase } from '$lib/Auth';
 	let showProfile = false;
 	let user = false;
 	const routes = [
