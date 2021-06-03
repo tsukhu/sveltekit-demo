@@ -10,14 +10,12 @@ import {
 let firebaseMain = null;
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function initFirebase() {
-
 	if (firebaseMain) {
 		return firebaseMain;
 	}
 
-	const module = await import('firebase/app');
+	const module = await import('firebase');
 	const firebase = module.default;
-	await Promise.all([import('firebase/auth')]);
 
 	const config = {
 		apiKey: FIREBASE_API_KEY,
