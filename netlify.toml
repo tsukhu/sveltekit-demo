@@ -2,5 +2,5 @@
   command = "npm run build"
   publish = "build"
   functions = "functions"
-[plugins]
+[[plugins]]
   package = "@netlify/plugin-functions-install-core"
