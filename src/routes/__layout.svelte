@@ -15,8 +15,8 @@
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
 	];
 
-	onMount(() => {
-		init();
+	onMount(async () => {
+		await init();
 	});
 </script>
 

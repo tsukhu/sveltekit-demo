@@ -36,12 +36,6 @@
     "@tailwindcss/forms": "^0.3.2",
     "firebase": "^8.6.3"
   },
-  "exports": {
-    "./auth": {
-      "node": "./auth/dist/index.cjs.js",
-      "default": "./auth/dist/index.esm.js"
-    }
-  },
   "author": "Tarun Kumar Sukhu",
   "license": "ISC"
 }
