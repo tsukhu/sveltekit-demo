@@ -38,40 +38,5 @@
     "firebase": "^8.6.3"
   },
   "author": "Tarun Kumar Sukhu",
-  "license": "MIT",
-  "exports": {
-    "./app": {
-      "node": "./app/dist/index.cjs.js",
-      "default": "./app/dist/index.esm.js"
-    },
-    "./auth": {
-      "node": "./auth/dist/index.cjs.js",
-      "default": "./auth/dist/index.esm.js"
-    },
-    "./firestore": {
-      "node": "./firestore/dist/index.cjs.js",
-      "default": "./firestore/dist/index.esm.js"
-    },
-    "./functions": {
-      "node": "./functions/dist/index.cjs.js",
-      "default": "./functions/dist/index.esm.js"
-    },
-    "./messaging": {
-      "node": "./messaging/dist/index.cjs.js",
-      "default": "./messaging/dist/index.esm.js"
-    },
-    "./performance": {
-      "node": "./performance/dist/index.cjs.js",
-      "default": "./performance/dist/index.esm.js"
-    },
-    "./remote-config": {
-      "node": "./remote-config/dist/index.cjs.js",
-      "default": "./remote-config/dist/index.esm.js"
-    },
-    "./storage": {
-      "node": "./storage/dist/index.cjs.js",
-      "default": "./storage/dist/index.esm.js"
-    },
-    "./package.json": "./package.json"
-  }
+  "license": "ISC"
 }
