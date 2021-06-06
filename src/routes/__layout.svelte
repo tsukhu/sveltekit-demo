@@ -3,9 +3,9 @@
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import { initFirebase } from '$lib/Auth';
+	import { auth, googleProvider } from '$lib/Auth';
+	import authStore from '../stores/authStore';
 	let showProfile = false;
-	let user = false;
 	const routes = [
 		{ href: '/', name: 'Todo App', tooltip: 'Todo' },
 		{ href: '/loan', name: 'Loan App', tooltip: 'Loan' },
@@ -14,10 +14,16 @@
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
 	];
+	$: console.log(auth.currentUser);
 
-	onMount(async () => {
-		const fb = await initFirebase();
-		console.log(fb);
+	onMount(() => {
+		auth.onAuthStateChanged((user) => {
+			authStore.set({
+				isLoggedIn: user !== null,
+				user,
+				firebaseControlled: true
+			});
+		});
 	});
 </script>
 
@@ -102,8 +108,9 @@
 					</div>
 					<!-- Profile dropdown -->
 					<div class="ml-3 relative hidden md:block">
-						{#if user}
-							<div>
+						{#if $authStore.isLoggedIn}
+							<div class="flex justify-end align-middle items-center">
+								<p class="text-xs text-gray-700 mx-1">{$authStore.user.displayName}</p>
 								<button
 									type="button"
 									class="max-w-xs bg-gray-800 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
@@ -113,10 +120,11 @@
 									on:click={() => (showProfile = !showProfile)}
 								>
 									<span class="sr-only">Open user menu</span>
+
 									<img
 										class="h-8 w-8 rounded-full"
-										src="https://ui-avatars.com/api/?font-size=0.33&background=ff3e00&color=fff&name=Svelte Kit"
-										alt=""
+										src={`https://ui-avatars.com/api/?font-size=0.33&background=ff3e00&color=fff&name=${$authStore.user.displayName}`}
+										alt={$authStore.user.displayName}
 									/>
 								</button>
 							</div>
@@ -128,7 +136,7 @@
 									id="user-menu-button"
 									aria-expanded="false"
 									aria-haspopup="true"
-									on:click={() => console.log('login')}
+									on:click={() => auth.signInWithPopup(googleProvider)}
 								>
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
 										><path fill="none" d="M0 0h24v24H0z" /><path
@@ -141,23 +149,45 @@
 						{/if}
 						{#if showProfile}
 							<div
-								class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+								class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 								role="menu"
 								aria-orientation="vertical"
 								aria-labelledby="user-menu-button"
 								tabindex="-1"
 							>
-								<a
-									href="#"
-									class="block px-4 py-2 text-sm text-gray-700"
+								<button
+									type="button"
+									class="block px-4 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
 									role="menuitem"
 									tabindex="-1"
-									id="user-menu-item-2">Sign out</a
+									id="user-menu-item-2"
+									on:click={async () => {
+										showProfile = false;
+										await auth.signOut();
+									}}
 								>
+									<div class="flex align-middle text-center items-center w-full ">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+											/>
+										</svg>
+										<div class="mx-1">Sign out</div>
+									</div>
+								</button>
 							</div>
 						{/if}
 					</div>
-					{#if user}
+					{#if $authStore.isLoggedIn}
 						<div class="-mr-2 flex md:hidden">
 							<!-- Mobile menu button -->
 							<button
@@ -218,7 +248,7 @@
 								id="user-menu-button"
 								aria-expanded="false"
 								aria-haspopup="true"
-								on:click={() => console.log('login')}
+								on:click={() => auth.signInWithPopup(googleProvider)}
 							>
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
 									><path fill="none" d="M0 0h24v24H0z" /><path
@@ -236,11 +266,32 @@
 				<div class="md:hidden" id="mobile-menu">
 					<div class="pt-4 pb-3 border-gray-700 ">
 						<div class="mt-1 px-2 space-y-1">
-							<a
-								href="#"
-								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-								>Sign out</a
+							<button
+								type="button"
+								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
+								on:click={async () => {
+									showProfile = false;
+									await auth.signOut();
+								}}
 							>
+								<div class="flex align-middle text-center items-center w-full ">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+										/>
+									</svg>
+									<div class="mx-1">Sign out</div>
+								</div>
+							</button>
 						</div>
 					</div>
 				</div>

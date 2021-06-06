@@ -7,30 +7,21 @@ import {
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
 
-let firebaseMain = null;
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function initFirebase() {
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
-	if (firebaseMain) {
-		return firebaseMain;
-	}
+const config = {
+	apiKey: FIREBASE_API_KEY,
+	authDomain: FIREBASE_AUTH_DOMAIN,
+	projectId: FIREBASE_PROJECT_ID,
+	storageBucket: FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+	appId: FIREBASE_APP_ID
+};
 
-	const module = await import('firebase/app');
-	const firebase = module.default;
-	await Promise.all([import('firebase/auth')]);
-
-	const config = {
-		apiKey: FIREBASE_API_KEY,
-		authDomain: FIREBASE_AUTH_DOMAIN,
-		projectId: FIREBASE_PROJECT_ID,
-		storageBucket: FIREBASE_STORAGE_BUCKET,
-		messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
-		appId: FIREBASE_APP_ID
-	};
-
-	if (!firebase.apps.length) {
-		firebase.initializeApp(config);
-	}
-	firebaseMain = firebase;
-	return firebase;
+if (!firebase.apps.length) {
+	firebase.initializeApp(config);
 }
+
+export const auth = firebase.auth();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
