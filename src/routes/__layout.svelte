@@ -1,3 +1,7 @@
+<script context="module">
+	export const ssr = false;
+</script>
+
 <script>
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
