@@ -24,6 +24,10 @@
 	export let posts;
 </script>
 
+<svelte:head>
+	<title>Posts</title>
+</svelte:head>
+
 <div class="flex justify-center align-middle items-center w-full">
 	<div class="p-4 m-2 border border-gray-200 rounded shadow w-full">
 		<h1 class="font-bold">Posts</h1>

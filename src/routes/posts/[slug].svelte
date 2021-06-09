@@ -12,7 +12,8 @@
 		}
 		return {
 			props: {
-				post
+				post,
+				slug: page.params.slug
 			}
 		};
 	}
@@ -20,7 +21,12 @@
 
 <script>
 	export let post; // posts
+	export let slug;
 </script>
+
+<svelte:head>
+	<title>Posts/{slug}</title>
+</svelte:head>
 
 <div class="flex justify-center align-middle items-center w-full">
 	<div class="p-4 m-2 border border-gray-200 rounded shadow">
