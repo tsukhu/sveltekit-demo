@@ -28,7 +28,7 @@
 	<div class="p-4 m-2 border border-gray-200 rounded shadow w-full">
 		<h1 class="font-bold">Posts</h1>
 		{#each posts as post}
-			<a href={`/posts/${post.id}`}>
+			<a sveltekit:prefetch href={`/posts/${post.id}`}>
 				<div class="bg-green-50 mx-auto m-2 p-1 border border-gray-400 rounded-md shadow hover:bg-green-300">
 					<div>
 						<h2 class="font-semibold">{post.title}</h2>
