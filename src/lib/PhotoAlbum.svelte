@@ -1,12 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
-
-	let photos = [];
-
-	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=20`);
-		photos = await res.json();
-	});
+	export let photos = [];
 </script>
 
 <h1 class="font-bold">Photo album</h1>
