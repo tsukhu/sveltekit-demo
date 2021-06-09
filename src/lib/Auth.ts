@@ -7,21 +7,29 @@ import {
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import { getApps, getApp, initializeApp } from '@firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
+import type { FirebaseOptions } from '@firebase/app';
+import type { Auth, UserCredential } from '@firebase/auth';
 
-const config = {
-	apiKey: FIREBASE_API_KEY,
-	authDomain: FIREBASE_AUTH_DOMAIN,
-	projectId: FIREBASE_PROJECT_ID,
-	storageBucket: FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
-	appId: FIREBASE_APP_ID
+const config: FirebaseOptions = {
+	apiKey: FIREBASE_API_KEY as string,
+	authDomain: FIREBASE_AUTH_DOMAIN as string,
+	projectId: FIREBASE_PROJECT_ID as string,
+	storageBucket: FIREBASE_STORAGE_BUCKET as string,
+	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID as string,
+	appId: FIREBASE_APP_ID as string
 };
 
-if (!firebase.apps.length) {
-	firebase.initializeApp(config);
+if (!getApps().length) {
+	initializeApp(config);
 }
 
-export const auth = firebase.auth();
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const getAppAuth = (): Auth => {
+	return getAuth(getApp());
+};
+export const googleProvider = new GoogleAuthProvider();
+
+export const signIn = (): Promise<UserCredential> => {
+	return signInWithPopup(getAppAuth(), googleProvider);
+};

@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import { auth, googleProvider } from '$lib/Auth';
+	import { getAppAuth, googleProvider, signIn } from '$lib/Auth';
 	import authStore from '../stores/authStore';
 	let showProfile = false;
 	const routes = [
@@ -14,10 +14,10 @@
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
 	];
-	$: console.log(auth.currentUser);
+	$: console.log(getAppAuth().currentUser);
 
 	onMount(() => {
-		auth.onAuthStateChanged((user) => {
+		getAppAuth().onAuthStateChanged((user) => {
 			authStore.set({
 				isLoggedIn: user !== null,
 				user,
@@ -136,7 +136,7 @@
 									id="user-menu-button"
 									aria-expanded="false"
 									aria-haspopup="true"
-									on:click={() => auth.signInWithPopup(googleProvider)}
+									on:click={() => signIn()}
 								>
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
 										><path fill="none" d="M0 0h24v24H0z" /><path
@@ -163,7 +163,7 @@
 									id="user-menu-item-2"
 									on:click={async () => {
 										showProfile = false;
-										await auth.signOut();
+										await getAppAuth().signOut();
 									}}
 								>
 									<div class="flex align-middle text-center items-center w-full ">
@@ -248,7 +248,7 @@
 								id="user-menu-button"
 								aria-expanded="false"
 								aria-haspopup="true"
-								on:click={() => auth.signInWithPopup(googleProvider)}
+								on:click={() => signIn()}
 							>
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
 									><path fill="none" d="M0 0h24v24H0z" /><path
@@ -271,7 +271,7 @@
 								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
 								on:click={async () => {
 									showProfile = false;
-									await auth.signOut();
+									await getAppAuth().signOut();
 								}}
 							>
 								<div class="flex align-middle text-center items-center w-full ">
