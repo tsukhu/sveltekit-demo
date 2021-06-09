@@ -13,7 +13,8 @@
 		{ href: '/store-one', name: 'Counter Store', tooltip: 'Counter with Store' },
 		{ href: '/album', name: 'Photos', tooltip: 'Photos App' },
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
-		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
+		{ href: '/email', name: 'Validator', tooltip: 'Email Action' },
+		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' }
 	];
 	$: browser?console.log(getAppAuth().currentUser):console.log('on server');
 
