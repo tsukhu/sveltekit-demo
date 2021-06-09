@@ -6,6 +6,10 @@ Experiments with Svelte kit
 
 This provides a complete set of samples built with SvelteKit and deployed on Vercel. This is an ongoing project and will continue to be enhanced with more samples which bring out the power of SvelteKit.
 
+## Demo Site
+
+[Demo Site](https://sveltekit-demo-psi.vercel.app/)
+
 ### Details
 
 - Tailwind CSS
@@ -21,7 +25,6 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - Email Validation and Tooltip - Svelte Actions
 - `prefetch` for photos and blog posts
 - `Firebase v9 + Google Provider` Auth
-
 
 ## Developing
 
