@@ -6,6 +6,22 @@ Experiments with Svelte kit
 
 This provides a complete set of samples built with SvelteKit and deployed on Vercel. This is an ongoing project and will continue to be enhanced with more samples which bring out the power of SvelteKit.
 
+### Details
+
+- Tailwind CSS
+- Typescript
+- Vercel Adaptor
+- Layout - App Shell for entire app
+- Todo App: Simple Todo app
+- Load App: Reactive Declarations based Loan App
+- Counter App: Simple Store base Counter App
+- Photo Album: Server side load() 
+- Modal Dialog: Modal Dialog using Event Dispatcher
+- Blog Posts/Dynamic Slug: Server side load()
+- `prefetch` for photos and blog posts
+- `Firebase v9 + Google Provider` Auth
+
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
