@@ -18,6 +18,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - Photo Album: Server side load() 
 - Modal Dialog: Modal Dialog using Event Dispatcher
 - Blog Posts/Dynamic Slug: Server side load()
+- Email Validation and Tooltip - Svelte Actions
 - `prefetch` for photos and blog posts
 - `Firebase v9 + Google Provider` Auth
 
