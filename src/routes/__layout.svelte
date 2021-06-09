@@ -1,13 +1,10 @@
-<script context="module">
-	export const ssr = false;
-</script>
-
 <script>
 	import { onMount } from 'svelte';
+	import { browser } from '$app/env';
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
 	import { tooltip } from '../actions/tooltip';
-	import { getAppAuth, googleProvider, signIn } from '$lib/Auth';
+	import { getAppAuth, signIn } from '$lib/Auth';
 	import authStore from '../stores/authStore';
 	let showProfile = false;
 	const routes = [
@@ -18,9 +15,10 @@
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' }
 	];
-	$: console.log(getAppAuth().currentUser);
+	$: browser?console.log(getAppAuth().currentUser):console.log('on server');
 
 	onMount(() => {
+		if (browser){
 		getAppAuth().onAuthStateChanged((user) => {
 			authStore.set({
 				isLoggedIn: user !== null,
@@ -28,6 +26,7 @@
 				firebaseControlled: true
 			});
 		});
+	}
 	});
 </script>
 
@@ -167,7 +166,9 @@
 									id="user-menu-item-2"
 									on:click={async () => {
 										showProfile = false;
-										await getAppAuth().signOut();
+										if (browser) {
+											await getAppAuth().signOut();
+										}
 									}}
 								>
 									<div class="flex align-middle text-center items-center w-full ">
@@ -275,7 +276,9 @@
 								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
 								on:click={async () => {
 									showProfile = false;
+									if (browser) {
 									await getAppAuth().signOut();
+									}
 								}}
 							>
 								<div class="flex align-middle text-center items-center w-full ">

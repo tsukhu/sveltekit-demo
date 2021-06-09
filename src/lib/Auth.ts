@@ -6,7 +6,7 @@ import {
 	FIREBASE_PROJECT_ID,
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
-
+import { browser } from '$app/env';
 import { getApps, getApp, initializeApp } from '@firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
 import type { FirebaseOptions } from '@firebase/app';
@@ -21,7 +21,7 @@ const config: FirebaseOptions = {
 	appId: FIREBASE_APP_ID as string
 };
 
-if (!getApps().length) {
+if (browser && !getApps().length) {
 	initializeApp(config);
 }
 
@@ -31,5 +31,9 @@ export const getAppAuth = (): Auth => {
 export const googleProvider = new GoogleAuthProvider();
 
 export const signIn = (): Promise<UserCredential> => {
-	return signInWithPopup(getAppAuth(), googleProvider);
+	if (browser) {
+		return signInWithPopup(getAppAuth(), googleProvider);
+	} else {
+		return;
+	}
 };
