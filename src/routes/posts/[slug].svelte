@@ -19,7 +19,7 @@
 </script>
 
 <script>
-	export let post;
+	export let post; // posts
 </script>
 
 <div class="flex justify-center align-middle items-center w-full">
