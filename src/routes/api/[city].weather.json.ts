@@ -22,6 +22,7 @@ const query = gql`
 `;
 const endpoint = 'https://graphql-weather-api.herokuapp.com/';
 
+
 const getWeatherForCity = async (city: string) => {
 	if (!city) return null;
 	const { getCityByName } = await request(endpoint, query, {

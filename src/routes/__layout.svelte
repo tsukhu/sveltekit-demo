@@ -14,20 +14,21 @@
 		{ href: '/album', name: 'Photos', tooltip: 'Photos App' },
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' },
-		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' }
+		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
+		{ href: '/weather', name: 'Weather', tooltip: 'Weather' }
 	];
-	$: browser?console.log(getAppAuth().currentUser):console.log('on server');
+	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
 
 	onMount(() => {
-		if (browser){
-		getAppAuth().onAuthStateChanged((user) => {
-			authStore.set({
-				isLoggedIn: user !== null,
-				user,
-				firebaseControlled: true
+		if (browser) {
+			getAppAuth().onAuthStateChanged((user) => {
+				authStore.set({
+					isLoggedIn: user !== null,
+					user,
+					firebaseControlled: true
+				});
 			});
-		});
-	}
+		}
 	});
 </script>
 
@@ -278,7 +279,7 @@
 								on:click={async () => {
 									showProfile = false;
 									if (browser) {
-									await getAppAuth().signOut();
+										await getAppAuth().signOut();
 									}
 								}}
 							>
