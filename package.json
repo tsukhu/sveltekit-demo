@@ -6,19 +6,27 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "format": "prettier --write --plugin-search-dir=. .",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.5",
     "@sveltejs/adapter-netlify": "^1.0.0-next.17",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "^1.0.0-next.114",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/svelte": "^3.0.3",
+    "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "autoprefixer": "^10.2.5",
+    "babel-jest": "^27.0.2",
     "cssnano": "^5.0.5",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
+    "jest": "^27.0.4",
     "postcss": "^8.2.10",
     "postcss-load-config": "^3.0.1",
     "prettier": "~2.2.1",
@@ -26,8 +34,10 @@
     "rimraf": "^3.0.2",
     "simple-svelte-autocomplete": "^1.3.2",
     "svelte": "^3.34.0",
+    "svelte-jester": "^1.7.0",
     "svelte-preprocess": "^4.7.1",
     "tailwindcss": "^2.1.4",
+    "ts-jest": "^27.0.3",
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
@@ -43,6 +53,31 @@
     "firebase": "^9.0.0-beta.3",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.svelte$": [
+        "svelte-jester",
+        {
+          "preprocess": true
+        }
+      ],
+      "^.+\\.ts$": "ts-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "svelte"
+    ],
+    "moduleNameMapper": {
+      "^\\$lib(.*)$": "<rootDir>/src/lib$1",
+      "^\\$app(.*)$": [
+        ".svelte/dev/runtime/app/*",
+        ".svelte/build/runtime/app/*"
+      ]
+    },
+    "testEnvironment": "jsdom"
   },
   "author": "Tarun Kumar Sukhu",
   "license": "ISC"
