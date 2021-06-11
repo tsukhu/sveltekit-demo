@@ -21,6 +21,9 @@
 				<p class="text-xl md:text-2xl pb-8 px-12 font-medium text-gray-500">
 					Oops! The page you are looking for does not exist. It might have been moved or deleted.
 				</p>
+				<p class="text-xl md:text-2xl pb-8 px-12 font-medium text-gray-500">
+					{title}
+				</p>
 				<a
 					href="/"
 					class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-semibold px-6 py-3 rounded-md mr-6"

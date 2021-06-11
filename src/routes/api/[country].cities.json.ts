@@ -1,12 +1,15 @@
 import cities from 'cities.json';
-export const get = async ({ params }) => {
+import type { EndpointOutput, Request } from '@sveltejs/kit';
+export const get = async ({ params }: Request): Promise<EndpointOutput> => {
 	const { country } = params;
 
 	return new Promise((resolve) => {
-		const filteredCities = country?(cities as any[]).filter((city) => city.country === country):cities;
+		const filteredCities = country
+			? (cities as any[]).filter((city) => city.country === country)
+			: cities;
 		resolve({
 			body: {
-				cities: filteredCities
+				cities: filteredCities as any[]
 			}
 		});
 	});

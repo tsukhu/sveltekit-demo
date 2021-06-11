@@ -1,4 +1,5 @@
 import { request, gql } from 'graphql-request';
+import type { EndpointOutput, Request } from '@sveltejs/kit';
 const query = gql`
 	query WeatherQuery($name: String!) {
 		getCityByName(name: $name) {
@@ -22,7 +23,6 @@ const query = gql`
 `;
 const endpoint = 'https://graphql-weather-api.herokuapp.com/';
 
-
 const getWeatherForCity = async (city: string) => {
 	if (!city) return null;
 	const { getCityByName } = await request(endpoint, query, {
@@ -34,7 +34,12 @@ const getWeatherForCity = async (city: string) => {
 	};
 };
 
-export const get = async ({ params }) => {
+export const get = async ({ params, locals }: Request): Promise<EndpointOutput> => {
+	// user must have a cookie set
+	if (!locals.userid) {
+		return { status: 401 };
+	}
+
 	const { city } = params;
 	let error = false;
 	const data: any = await getWeatherForCity(city).catch(() => (error = true));

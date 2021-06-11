@@ -35,8 +35,10 @@
   "description": "Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);",
   "main": "svelte.config.js",
   "dependencies": {
+    "@lukeed/uuid": "^2.0.0",
     "@tailwindcss/forms": "^0.3.2",
     "cities.json": "^1.1.5",
+    "cookie": "^0.4.1",
     "countries-list": "^2.6.1",
     "firebase": "^9.0.0-beta.3",
     "graphql": "^15.5.0",

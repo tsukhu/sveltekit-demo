@@ -25,8 +25,9 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - Email Validation and Tooltip - Svelte Actions
 - `prefetch` for photos and blog posts
 - `Firebase v9 + Google Provider` Auth
-- Weather App: Uses endpoints, graphql, reactive functions,store
+- Weather App: Uses endpoints, graphql, reactive functions,store, userid cookie with hooks passed
 - Added 404 Page: Error Page
+- About with prerendering
 
 ## Developing
 
