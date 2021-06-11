@@ -28,7 +28,6 @@
 				bind:selectedItem={selectedCountry}
 				bind:value={selectedCountry}
 				labelFieldName="name"
-				delay={250}
 				className="w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
 			/>
 		{/if}
