@@ -67,9 +67,9 @@
 		</nav>
 		<div class="flex-1 flex flex-col">
 			<div class="flex items-center justify-between flex-wrap bg-teal p-2">
-				<div class="flex items-center flex-no-shrink text-white flex-1 justify-between mr-6">
-					<div class="flex">
-						<svg
+				<div class="flex items-center flex-no-shrink text-white flex-1 justify-start mr-6">
+					<a href="/" class="flex flex-1"
+						><svg
 							version="1.1"
 							id="Layer_1"
 							xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,23 @@
 							/>
 						</svg>
 						<span class="font-semibold tracking-tight text-gray-700 p-2">SvelteKit Experiments</span
-						>
+						></a
+					>
+					<div class="text-gray-700 p-2 mx-1">
+						<a href="/about"
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</a>
 					</div>
 					<!-- Profile dropdown -->
 					<div class="ml-3 relative hidden md:block">
@@ -194,6 +210,7 @@
 							</div>
 						{/if}
 					</div>
+
 					{#if $authStore.isLoggedIn}
 						<div class="-mr-2 flex md:hidden">
 							<!-- Mobile menu button -->
