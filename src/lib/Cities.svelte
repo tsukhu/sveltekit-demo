@@ -21,7 +21,6 @@
 				bind:selectedItem={selectedCity}
 				bind:value={selectedCity}
 				labelFieldName="name"
-				delay={250}
 				disabled={data === null || (data && data.cities && data.cities.length === 0)}
 				className="w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
 			/>
