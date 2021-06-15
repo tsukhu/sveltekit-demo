@@ -39,7 +39,8 @@
 
 <svelte:window on:keydown={handle_keydown} />
 <div
-	transition:fade
+	in:fade
+	out:fade
 	class="fixed z-10 inset-0 overflow-y-auto"
 	aria-labelledby="modal-title"
 	role="dialog"
