@@ -4,17 +4,6 @@
 	import countryStore from '../stores/countryStore';
 	const dispatchEvent = createEventDispatcher();
 	export let data;
-	//let selectedCountry;
-	/* 	const getCities = async (selectedCountry: any) => {
-		let data;
-		try {
-			const res = await fetch(`/api/${selectedCountry}.cities.json`);
-			data = await res.json();
-		} catch (e) {
-			console.log(e);
-		}
-		return data;
-	}; */
 	$: if ($countryStore) {
 		dispatchEvent('selectedCountry', $countryStore.id);
 	}

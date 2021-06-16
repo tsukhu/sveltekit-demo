@@ -67,7 +67,7 @@
 					if (e.detail === $citiesStore?.countryCode) {
 						return;
 					}
-					citiesStore.set({ countryCode: e.detail, cities: [] });
+					citiesStore.set({ countryCode: e.detail, cities: null });
 					weatherStore.update((state) => {
 						state.loading = false;
 						state.result = null;
