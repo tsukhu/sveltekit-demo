@@ -1,20 +1,8 @@
 <script>
 	import weatherStore from '../stores/weatherStore';
 	import { temperatureConverter } from './Weather';
-
-	const data = {
-		data: {
-			id: '6619347',
-			name: 'Navi Mumbai',
-			weather: {
-				summary: { icon: '50d', description: 'haze', title: 'Haze' },
-				temperature: { actual: 302.12, feelsLike: 308.7, min: 302.12, max: 303.08 }
-			}
-		}
-	};
 	let value = { result: 'No city selected' };
 	$: ({ result, loading } = $weatherStore ? $weatherStore : { result: 'No city selected' });
-	$: console.log(value);
 	$: actual = temperatureConverter(result?.data?.weather?.temperature?.actual);
 	$: feelsLike = temperatureConverter(result?.data?.weather?.temperature?.feelsLike);
 	$: min = temperatureConverter(result?.data?.weather?.temperature?.min);
@@ -72,18 +60,18 @@
 					class="bg-indigo-700 text-gray-100 rounded px-2 sm:flex-1 flex flex-col gap-1 font-thin"
 				>
 					<div>{'Feels Like'}</div>
-					<div class="font-semibold text-center">{actual?.celsius}C | {actual?.fahrenheit}F</div>
+					<div class="font-semibold text-center">{feelsLike?.celsius}C | {feelsLike?.fahrenheit}F</div>
 				</div>
 				<div
 					class="bg-pink-700 text-gray-100 rounded px-2 sm:flex-1 flex flex-col  gap-1 font-thin"
 				>
 					Min <div class="font-semibold text-center">
-						{actual?.celsius}C | {actual?.fahrenheit}F
+						{min?.celsius}C | {min?.fahrenheit}F
 					</div>
 				</div>
 				<div class="bg-red-700 text-gray-100 rounded px-2 sm:flex-1 flex flex-col  gap-1 font-thin">
 					Max <div class="font-semibold text-center">
-						{actual?.celsius}C | {actual?.fahrenheit}F
+						{max?.celsius}C | {max?.fahrenheit}F
 					</div>
 				</div>
 			</div>

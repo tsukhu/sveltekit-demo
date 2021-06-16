@@ -18,16 +18,14 @@
 		};
 	}
 </script>
-<svelte:head>
-	<title>City Weather</title>
-</svelte:head>
+
 <script lang="ts">
 	import Countries from '$lib/Countries.svelte';
 	import Cities from '$lib/Cities.svelte';
 	import CityWeather from '$lib/CityWeather.svelte';
 	import weatherStore from '../stores/weatherStore';
+	import citiesStore from '../stores/citiesStore';
 	export let data;
-	let cities = { cities: [] };
 	let cityWeather = {};
 	const getCities = async (selectedCountry: any) => {
 		let data;
@@ -50,8 +48,14 @@
 		}
 		return data;
 	};
-	$: console.log(cities);
+	$: console.log($citiesStore);
+	let cities;
+	$: cities = $citiesStore?.cities ? $citiesStore?.cities : [];
 </script>
+
+<svelte:head>
+	<title>City Weather</title>
+</svelte:head>
 
 <div class="flex justify-center align-middle items-center">
 	<div class="p-4 m-2 border border-gray-200 rounded shadow">
@@ -60,13 +64,18 @@
 			<Countries
 				{data}
 				on:selectedCountry={async (e) => {
-					cities = { cities: [] };
+					if (e.detail === $citiesStore?.countryCode) {
+						return;
+					}
+					citiesStore.set({ countryCode: e.detail, cities: [] });
 					weatherStore.update((state) => {
 						state.loading = false;
 						state.result = null;
 						return state;
 					});
-					cities = await getCities(e.detail);
+					let data = await getCities(e.detail);
+					console.log(data);
+					citiesStore.set({ countryCode: e.detail, cities: data.cities });
 				}}
 			/>
 			<Cities
