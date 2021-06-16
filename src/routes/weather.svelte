@@ -23,8 +23,8 @@
 	import Countries from '$lib/Countries.svelte';
 	import Cities from '$lib/Cities.svelte';
 	import CityWeather from '$lib/CityWeather.svelte';
-	import weatherStore from '../stores/weatherStore';
-	import citiesStore from '../stores/citiesStore';
+	import weatherStore from '$stores/weatherStore';
+	import citiesStore from '$stores/citiesStore';
 	export let data;
 	let cityWeather = {};
 	const getCities = async (selectedCountry: any) => {

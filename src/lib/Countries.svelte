@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import { createEventDispatcher } from 'svelte';
-	import countryStore from '../stores/countryStore';
+	import countryStore from '$stores/countryStore';
 	const dispatchEvent = createEventDispatcher();
 	export let data;
 	$: if ($countryStore) {

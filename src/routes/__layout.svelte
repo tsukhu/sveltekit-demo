@@ -3,9 +3,9 @@
 	import { browser } from '$app/env';
 	import { page } from '$app/stores';
 	import Tooltip from '$lib/Tooltip.svelte';
-	import { tooltip } from '../actions/tooltip';
+	import { tooltip } from '$actions/tooltip';
 	import { getAppAuth, signIn } from '$lib/Auth';
-	import authStore from '../stores/authStore';
+	import authStore from '$stores/authStore';
 	let showProfile = false;
 	const routes = [
 		{ href: '/', name: 'Todo App', tooltip: 'Todo' },

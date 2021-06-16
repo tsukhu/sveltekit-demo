@@ -23,7 +23,9 @@
 		"allowJs": true,
 		"checkJs": true,
 		"paths": {
-			"$lib/*": ["src/lib/*"]
+			"$lib/*": ["src/lib/*"],
+			"$stores/*": ["src/stores/*"],
+			"$actions/*": ["src/actions/*"]
 		},
 		"types": ["jest"]
 	},

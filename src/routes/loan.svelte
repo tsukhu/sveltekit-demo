@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 
 	import Loan from '$lib/Loan.svelte';
-	import authStore from '../stores/authStore';
+	import authStore from '$stores/authStore';
 	let error = false;
 
 	authStore.subscribe(async ({ isLoggedIn, firebaseControlled }) => {

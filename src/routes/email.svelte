@@ -1,5 +1,5 @@
 <script type="ts">
-	import { validator } from '../actions/validate';
+	import { validator } from '$actions/validate';
 
 	let [isValid, validate] = validator();
 	let email = null;

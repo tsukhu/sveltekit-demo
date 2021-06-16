@@ -1,5 +1,5 @@
 <script>
-	import weatherStore from '../stores/weatherStore';
+	import weatherStore from '$stores/weatherStore';
 	import { temperatureConverter } from './Weather';
 	let value = { result: 'No city selected' };
 	$: ({ result, loading } = $weatherStore ? $weatherStore : { result: 'No city selected' });
