@@ -4,6 +4,14 @@
 	import locationStore from '$stores/locationStore';
 	let error;
 
+	let ready;
+
+	if (browser) {
+		window.initMap = () => {
+			ready = true;
+		};
+	}
+
 	function success(position) {
 		const lat = position.coords.latitude;
 		const lng = position.coords.longitude;
@@ -17,7 +25,7 @@
 
 <svelte:head>
 	<title>Map</title>
-	<script defer async src="https://maps.googleapis.com/maps/api/js">
+	<script defer async src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 	</script>
 </svelte:head>
 
@@ -26,7 +34,7 @@
 		class="p-4 m-2 border border-gray-200 rounded shadow flex-1 w-full flex align-middle items-center justify-between"
 	>
 		<h2 class="font-bold text-center align-middle text-gray-800 m-1">Google Map</h2>
-        {#if error}<p class="text-xs text-red-500">{error}</p>{/if}
+		{#if error}<p class="text-xs text-red-500">{error}</p>{/if}
 		<button
 			on:click={() => {
 				if (!navigator.geolocation) {
@@ -53,7 +61,7 @@
 		</button>
 	</div>
 	<div class="flex-1 w-full">
-		{#if browser}
+		{#if ready}
 			<MapComponent />
 		{/if}
 	</div>
