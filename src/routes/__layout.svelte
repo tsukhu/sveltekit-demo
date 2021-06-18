@@ -15,7 +15,8 @@
 		{ href: '/modal', name: 'Modal', tooltip: 'Modal Dialog' },
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' },
 		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
-		{ href: '/weather', name: 'Weather', tooltip: 'Weather' }
+		{ href: '/weather', name: 'Weather', tooltip: 'Weather' },
+		{ href: '/map', name: 'Map', tooltip: 'map' },
 	];
 	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
 
@@ -68,7 +69,7 @@
 		<div class="flex-1 flex flex-col">
 			<div class="flex items-center justify-between flex-wrap bg-teal p-2">
 				<div class="flex items-center flex-no-shrink text-white flex-1 justify-start mr-6">
-					<a href="/" class="flex flex-1"
+					<a sveltekit:prefetch href="/" class="flex flex-1"
 						><svg
 							version="1.1"
 							id="Layer_1"
