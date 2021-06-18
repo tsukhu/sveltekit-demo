@@ -9,6 +9,7 @@
 	$: center = $locationStore;
 
 	onMount(async () => {
+		// @ts-ignore
 		map = new google.maps.Map(container, {
 			zoom,
 			center

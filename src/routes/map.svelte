@@ -1,16 +1,23 @@
 <script>
 	import { browser } from '$app/env';
+	import { onMount, onDestroy } from 'svelte';
 	import MapComponent from '$lib/MapComponent.svelte';
 	import locationStore from '$stores/locationStore';
 	let error;
-
 	let ready;
-
-	if (browser) {
+	let myScript;
+	onMount(() => {
+		if (typeof window.google === 'undefined') {
+			myScript = document.createElement('script');
+			myScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?callback=initMap');
+			document.body.appendChild(myScript);
+		} else {
+			ready = true;
+		}
 		window.initMap = () => {
 			ready = true;
 		};
-	}
+	});
 
 	function success(position) {
 		const lat = position.coords.latitude;
@@ -25,8 +32,6 @@
 
 <svelte:head>
 	<title>Map</title>
-	<script defer async src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-	</script>
 </svelte:head>
 
 <div class="flex align-middle items-center w-full flex-col">
