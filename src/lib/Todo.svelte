@@ -26,15 +26,15 @@
 	}
 </script>
 
-<h2 class="font-bold text-center align-middle text-gray-800">To Do App</h2>
-<div class="flex-1 px-2 py-3 text-xs text-green-700 flex justify-between"><div class="text-gray-700 uppercase font-semibold">user id</div>{$session.user.userid}</div>
+<h2 class="font-bold text-center align-middle text-gray-800 dark:text-gray-100">To Do App</h2>
+<div class="flex-1 px-2 py-3 text-xs text-green-700 dark:text-green-200 flex justify-between"><div class="text-gray-700 dark:text-gray-50 uppercase font-semibold mx-1">user id</div>{$session.user.userid}</div>
 <div class="italic text-xs flex justify-start align-middle items-center">
-	<div class="flex-1 px-2 py-3">{status}</div>
+	<div class="flex-1 px-2 py-3 text-gray-500 dark:text-gray-100">{status}</div>
 
 	<button
 		on:click={archiveCompleted}
 		type="button"
-		class="inline-flex  items-center justify-center px-5 py-3 border border-indigo-200 text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
+		class="inline-flex  items-center justify-center px-5 py-3 border border-indigo-200 dark:border-indigo-200 text-base font-medium rounded-md text-indigo-600 bg-white dark:bg-transparent dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700"
 		><svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="h-5 w-5"
@@ -58,7 +58,7 @@
 		type="text"
 		placeholder="enter a new todo"
 		bind:value={todoText}
-		class="px-2 py-3 w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
+		class="px-2 py-3 w-full md:w-80 placeholder-blue-600 dark:placeholder-blue-200 text-blue-800 dark:text-blue-200 relative bg-white dark:bg-gray-700 rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
 	/>
 	<button
 		disabled={!todoText}

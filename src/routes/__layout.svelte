@@ -1,4 +1,4 @@
-<script>
+<script type="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import { page } from '$app/stores';
@@ -6,6 +6,7 @@
 	import { tooltip } from '$actions/tooltip';
 	import { getAppAuth, signIn } from '$lib/Auth';
 	import authStore from '$stores/authStore';
+	import modeStore from '$stores/modeStore';
 	let showProfile = false;
 	const routes = [
 		{ href: '/', name: 'Todo App', tooltip: 'Todo' },
@@ -16,9 +17,14 @@
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' },
 		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
 		{ href: '/weather', name: 'Weather', tooltip: 'Weather' },
-		{ href: '/map', name: 'Map', tooltip: 'map' },
+		{ href: '/map', name: 'Map', tooltip: 'map' }
 	];
 	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
+	$: if (browser && $modeStore === true) {
+		document.documentElement.classList.add('dark');
+	} else if (browser && $modeStore === false) {
+		document.documentElement.classList.remove('dark');
+	}
 
 	onMount(() => {
 		if (browser) {
@@ -67,7 +73,7 @@
 			</div>
 		</nav>
 		<div class="flex-1 flex flex-col">
-			<div class="flex items-center justify-between flex-wrap bg-teal p-2">
+			<div class="flex items-center justify-between flex-wrap bg-gray-50 dark:bg-gray-900 dark:text-white p-2 align-middle">
 				<div class="flex items-center flex-no-shrink text-white flex-1 justify-start mr-6">
 					<a sveltekit:prefetch href="/" class="flex flex-1"
 						><svg
@@ -109,10 +115,10 @@
 	c8.9-2.3,18.2,1.2,23.4,8.7c3.2,4.4,4.4,9.9,3.5,15.3c-0.9,5.2-4.1,9.9-8.6,12.7l-27.5,17.5C44.8,102.5,42.9,103.3,40.9,103.9"
 							/>
 						</svg>
-						<span class="font-semibold tracking-tight text-gray-700 p-2">SvelteKit Experiments</span
+						<span class="font-semibold tracking-tight text-gray-700 dark:text-gray-100 p-2">SvelteKit Experiments</span
 						></a
 					>
-					<div class="text-gray-700 p-2 mx-1">
+					<div class="text-gray-700 dark:text-gray-100 p-2 mx-1">
 						<a href="/about"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +134,47 @@
 							</svg>
 						</a>
 					</div>
+					<div class="text-gray-700 dark:text-gray-100 mt-2 mx-2">
+						<button type="button" on:click={() => modeStore.update((m) => (m = !m))}>
+							{#if $modeStore === true}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-6 w-6"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							{:else}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+									/>
+								</svg>
+							{/if}
+						</button>
+					</div>
 					<!-- Profile dropdown -->
 					<div class="ml-3 relative hidden md:block">
 						{#if $authStore.isLoggedIn}
 							<div class="flex justify-end align-middle items-center">
-								<p class="text-xs text-gray-700 mx-1">{$authStore.user.displayName}</p>
+								<p class="text-xs text-gray-700 dark:text-gray-100 mx-1">{$authStore.user.displayName}</p>
 								<button
 									type="button"
-									class="max-w-xs bg-gray-800 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
+									class="max-w-xs bg-gray-800 dark:bg-gray-100 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
 									id="user-menu-button"
 									aria-expanded="false"
 									aria-haspopup="true"
@@ -171,7 +210,7 @@
 						{/if}
 						{#if showProfile}
 							<div
-								class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+								class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg py-1 bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 focus:outline-none"
 								role="menu"
 								aria-orientation="vertical"
 								aria-labelledby="user-menu-button"
@@ -179,7 +218,7 @@
 							>
 								<button
 									type="button"
-									class="block px-4 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
+									class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-800 w-full"
 									role="menuitem"
 									tabindex="-1"
 									id="user-menu-item-2"
@@ -289,11 +328,11 @@
 			<!-- Mobile menu, show/hide based on menu state. -->
 			{#if showProfile}
 				<div class="md:hidden" id="mobile-menu">
-					<div class="pt-4 pb-3 border-gray-700 ">
+					<div class="pt-4 pb-3 border-gray-700 dark:bg-gray-700">
 						<div class="mt-1 px-2 space-y-1">
 							<button
 								type="button"
-								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full"
+								class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-800 w-full"
 								on:click={async () => {
 									showProfile = false;
 									if (browser) {
@@ -323,15 +362,15 @@
 					</div>
 				</div>
 			{/if}
-			<div class="flex-1 py-6 sm:px-6 lg:px-8 bg-gray-200 ">
+			<div class="flex-1 py-6 sm:px-6 lg:px-8 bg-gray-200 dark:bg-gray-600">
 				<div class="px-2 py-2 sm:px-0 flex flex-col h-full">
-					<div class="border-2 border-dashed border-purple-300 bg-white rounded-lg flex-1 p-2">
+					<div class="border border-gray-100 dark:border-gray-500 bg-white dark:bg-gray-500 rounded-lg flex-1 p-2 shadow">
 						<slot />
 					</div>
 				</div>
 			</div>
 			<footer
-				class="p-2 bg-white flex text-gray-600 text-xs align-middle items-center justify-between shadow-sm border-t border-gray-100"
+				class="p-2 bg-white dark:bg-gray-900 flex text-gray-600 dark:text-gray-100 text-xs align-middle items-center justify-between shadow-sm border-t border-gray-100 dark:border-gray-700"
 			>
 				<div>tsukhu@github</div>
 				<div>Powered by SvelteKit</div>

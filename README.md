@@ -12,23 +12,25 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 
 ### Details
 
-- Tailwind CSS
-- Typescript
-- Vercel Adaptor
-- Layout - App Shell for entire app
-- Todo App: Simple Todo app
-- Load App: Reactive Declarations based Loan App
-- Counter App: Simple Store base Counter App
-- Photo Album: Server side load() 
-- Modal Dialog: Modal Dialog using Event Dispatcher
-- Blog Posts/Dynamic Slug: Server side load()
-- Email Validation and Tooltip - Svelte Actions
-- `prefetch` for photos and blog posts
-- `Firebase v9 + Google Provider` Auth
-- Weather App: Uses endpoints, graphql, reactive functions,store, userid cookie with hooks passed
-- Added 404 Page: Error Page
-- About with prerendering
-- Tests setup with Jest & Testing Library
+- [x] Tailwind CSS
+- [x] Typescript
+- [x] Vercel Adaptor
+- [x] Layout - App Shell for entire app
+- [x] Todo App: Simple Todo app
+- [x] Load App: Reactive Declarations based Loan App
+- [x] Counter App: Simple Store base Counter App
+- [x] Photo Album: Server side load() 
+- [x] Modal Dialog: Modal Dialog using Event Dispatcher
+- [x] Blog Posts/Dynamic Slug: Server side load()
+- [x] Email Validation and Tooltip - Svelte Actions
+- [x] `prefetch` for photos and blog posts
+- [x] `Firebase v9 + Google Provider` Auth
+- [x] Weather App: Uses endpoints, graphql, reactive functions,store, userid cookie with hooks passed
+- [x] Added 404 Page: Error Page
+- [x] About with prerendering
+- [x] Tests setup with Jest & Testing Library
+- [x] Google Maps Integation
+- [x] Tailwind Dark Mode
 
 ## Developing
 

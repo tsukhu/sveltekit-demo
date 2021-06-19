@@ -28,24 +28,24 @@
 		</div>
 	{:else if result && result.data}
 		<div
-			class="border w-full items-center align-middle text-left text-sm text-gray-700 flex flex-col p-2 rounded"
+			class="border w-full items-center align-middle text-left text-sm text-gray-700 flex flex-col p-2 rounded dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
 		>
 			<div class="w-full relative m-4">
-				<p class="font-bold text-md">{result.data.name}</p>
+				<p class="font-bold text-md dark:text-gray-200">{result.data.name}</p>
 				<div class="text-sm flex justify-between">
 					<div class="m-2">
-						<p class="text-blue-700 font-semibold">{result.data.weather.summary.title}</p>
+						<p class="text-blue-700 dark:text-gray-200 font-semibold">{result.data.weather.summary.title}</p>
 						<p class="capitalize italic text-xs">{result.data.weather.summary.description}</p>
 					</div>
 				</div>
-				<div class="absolute right-0 -top-2">
+				<div class="absolute right-0 -top-2 dark:text-gray-200">
 					<img
 						src={`http://openweathermap.org/img/wn/${result.data.weather.summary.icon}@2x.png`}
 						alt={result.data.weather.summary.title}
 					/>
 				</div>
 			</div>
-            <h2 class="capitalize text-gray-700 font-bold text-left items-start p-2">temperature</h2>
+            <h2 class="capitalize text-gray-700 font-bold text-left items-start p-2 dark:text-gray-200">temperature</h2>
 			<div
 				class="w-full flex flex-wrap gap-2 h-auto justify-evenly align-middle items-center text-xs sm:text-sm"
 			>

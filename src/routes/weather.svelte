@@ -58,8 +58,8 @@
 </svelte:head>
 
 <div class="flex justify-center align-middle items-center">
-	<div class="p-4 m-2 border border-gray-200 rounded shadow">
-		<h1 class="p-2 font-bold text-gray-700">City Weather</h1>
+	<div class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600">
+		<h1 class="p-2 font-bold text-gray-700 dark:text-gray-200">City Weather</h1>
 		<div class="flex flex-wrap gap-2">
 			<Countries
 				{data}

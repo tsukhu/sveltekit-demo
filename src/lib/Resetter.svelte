@@ -9,7 +9,7 @@
 <button
 	on:click={reset}
 	type="button"
-	class="m-2 inline-flex  items-center justify-center px-5 py-3 border border-indigo-200 text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
+	class="m-2 inline-flex  items-center justify-center px-5 py-3 border border-indigo-200 dark:border-indigo-200 text-base font-medium rounded-md text-indigo-600 bg-white dark:bg-transparent dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700"
 	><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
 		<path

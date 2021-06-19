@@ -22,7 +22,7 @@
 	/>
 	<span
 		class={`${
-			todo.done ? 'text-gray-500 line-through italic' : 'text-gray-800'
+			todo.done ? 'text-gray-500 dark:text-gray-200 line-through italic' : 'text-gray-800'
 		} p-2 text-left flex-1 text-sm`}>{todo.text}</span
 	>
 	<button

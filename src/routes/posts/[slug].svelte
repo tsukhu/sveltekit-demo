@@ -29,8 +29,8 @@
 </svelte:head>
 
 <div class="flex justify-center align-middle items-center w-full">
-	<div class="p-4 m-2 border border-gray-200 rounded shadow">
-		<a href={`/posts`} class="text-xs hover:text-green-700 flex bg-gray-100 align-middle items-center rounded p-2 shadow"
+	<div class="p-4 m-2 border dark:border-gray-500 rounded shadow bg-white dark:bg-green-500 ">
+		<a href={`/posts`} class="text-xs dark:hover:text-green-200 hover:text-green-600 flex bg-gray-100 dark:bg-green-900 dark:text-gray-200 align-middle items-center rounded p-2 shadow"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-5 w-5"
@@ -44,7 +44,7 @@
 				/>
 			</svg> <p class="mx-1">All Posts</p></a
 		>
-		<div class="bg-green-50 mx-auto m-2 p-1 border border-gray-400 rounded-md shadow">
+		<div class="bg-green-50 dark:bg-green-900 dark:text-gray-200 mx-auto m-2 p-1 border border-gray-400 dark:border-gray-700 rounded-md shadow hover:bg-green-300 dark:hover:bg-green-700">
 			<h1 class="font-bold">{post.title}</h1>
 			<p class="italic">{@html post.body}</p>
 		</div>
