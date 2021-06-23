@@ -17,6 +17,8 @@
     "@sveltejs/kit": "^1.0.0-next.116",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/svelte": "^3.0.3",
+    "@types/google.maps": "^3.45.3",
+    "@types/googlemaps": "^3.43.3",
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
@@ -39,6 +41,7 @@
     "tailwindcss": "^2.1.4",
     "ts-jest": "^27.0.3",
     "tslib": "^2.0.0",
+    "d3": "^7.0.0",
     "typescript": "^4.0.0"
   },
   "type": "module",
@@ -52,7 +55,9 @@
     "countries-list": "^2.6.1",
     "firebase": "^9.0.0-beta.3",
     "graphql": "^15.5.0",
-    "graphql-request": "^3.4.0"
+    "graphql-request": "^3.4.0",
+    "topojson": "^3.0.2",
+    "topojson-client": "^3.1.0"
   },
   "jest": {
     "transform": {

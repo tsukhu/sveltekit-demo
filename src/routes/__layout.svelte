@@ -17,7 +17,8 @@
 		{ href: '/email', name: 'Validator', tooltip: 'Email Action' },
 		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
 		{ href: '/weather', name: 'Weather', tooltip: 'Weather' },
-		{ href: '/map', name: 'Map', tooltip: 'map' }
+		{ href: '/map', name: 'Map', tooltip: 'map' },
+		{ href: '/worldmap', name: 'World Map', tooltip: 'D3 World Map' },
 	];
 	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
 	$: if (browser && $modeStore === true) {

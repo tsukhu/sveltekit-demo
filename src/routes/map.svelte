@@ -1,6 +1,6 @@
-<script>
-	import { browser } from '$app/env';
-	import { onMount, onDestroy } from 'svelte';
+<script lang="ts">
+
+	import { onMount } from 'svelte';
 	import MapComponent from '$lib/MapComponent.svelte';
 	import locationStore from '$stores/locationStore';
 	let error;
