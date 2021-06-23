@@ -31,6 +31,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Tests setup with Jest & Testing Library
 - [x] Google Maps Integation
 - [x] Tailwind Dark Mode
+- [x] D3 Maps (WIP)
 
 ## Developing
 
@@ -52,3 +53,8 @@ npm run build
 ```
 
 > You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+
+## Known Issues
+
+- World Map Sample
+    - [viteJS D3 issue](https://github.com/vitejs/vite/issues/2393)
