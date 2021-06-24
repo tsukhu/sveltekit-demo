@@ -1,5 +1,6 @@
 <script>
 	import weatherStore from '$stores/weatherStore';
+	import Loader from '$lib/Loader.svelte';
 	import { temperatureConverter } from './Weather';
 	let value = { result: 'No city selected' };
 	$: ({ result, loading } = $weatherStore ? $weatherStore : { result: 'No city selected' });
@@ -11,21 +12,7 @@
 
 <div class="p-2 m-2 rounded w-full flex align-middle text-center">
 	{#if loading}
-		<div>
-			<svg
-				class="animate-spin -ml-1 mr-3 h-5 w-5 text-green-500"
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-			>
-				<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-				<path
-					class="opacity-75"
-					fill="currentColor"
-					d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-				/>
-			</svg>
-		</div>
+		<Loader />
 	{:else if result && result.data}
 		<div
 			class="border w-full items-center align-middle text-left text-sm text-gray-700 flex flex-col p-2 rounded dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"

@@ -7,6 +7,13 @@
 	import { getAppAuth, signIn } from '$lib/Auth';
 	import authStore from '$stores/authStore';
 	import modeStore from '$stores/modeStore';
+	import SvelteLogoSvg from '$lib/SvelteLogoSVG.svelte';
+	import AboutSvg from '$lib/AboutSVG.svelte';
+	import LightModeSvg from '$lib/LightModeSVG.svelte';
+	import DarkModeSvg from '$lib/DarkModeSVG.svelte';
+	import SignInSvg from '$lib/SignInSVG.svelte';
+	import SignOutSvg from '$lib/SignOutSVG.svelte';
+	import MobileMenuBtnSvg from '$lib/MobileMenuBtnSVG.svelte';
 	let showProfile = false;
 	const routes = [
 		{ href: '/', name: 'Todo App', tooltip: 'Todo' },
@@ -18,7 +25,7 @@
 		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
 		{ href: '/weather', name: 'Weather', tooltip: 'Weather' },
 		{ href: '/map', name: 'Map', tooltip: 'map' },
-		{ href: '/worldmap', name: 'World Map', tooltip: 'D3 World Map' },
+		{ href: '/worldmap', name: 'World Surfers', tooltip: 'D3 World Map' }
 	];
 	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
 	$: if (browser && $modeStore === true) {
@@ -74,97 +81,25 @@
 			</div>
 		</nav>
 		<div class="flex-1 flex flex-col">
-			<div class="flex items-center justify-between flex-wrap bg-gray-50 dark:bg-gray-900 dark:text-white p-2 align-middle">
+			<div
+				class="flex items-center justify-between flex-wrap bg-gray-50 dark:bg-gray-900 dark:text-white p-2 align-middle"
+			>
 				<div class="flex items-center flex-no-shrink text-white flex-1 justify-start mr-6">
 					<a sveltekit:prefetch href="/" class="flex flex-1"
-						><svg
-							version="1.1"
-							id="Layer_1"
-							xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink"
-							x="0px"
-							y="0px"
-							viewBox="0 0 98.1 118"
-							style="enable-background:new 0 0 98.1 118;"
-							xml:space="preserve"
-							height="30px"
-							width="30px"
-						>
-							<style type="text/css">
-								.st0 {
-									fill: #ff3e00;
-								}
-								.st1 {
-									fill: #ffffff;
-								}
-							</style>
-							<path
-								class="st0"
-								d="M91.8,15.6C80.9-0.1,59.2-4.7,43.6,5.2L16.1,22.8C8.6,27.5,3.4,35.2,1.9,43.9c-1.3,7.3-0.2,14.8,3.3,21.3
-	c-2.4,3.6-4,7.6-4.7,11.8c-1.6,8.9,0.5,18.1,5.7,25.4c11,15.7,32.6,20.3,48.2,10.4l27.5-17.5c7.5-4.7,12.7-12.4,14.2-21.1
-	c1.3-7.3,0.2-14.8-3.3-21.3c2.4-3.6,4-7.6,4.7-11.8C99.2,32.1,97.1,22.9,91.8,15.6"
-							/>
-							<path
-								class="st1"
-								d="M40.9,103.9c-8.9,2.3-18.2-1.2-23.4-8.7c-3.2-4.4-4.4-9.9-3.5-15.3c0.2-0.9,0.4-1.7,0.6-2.6l0.5-1.6l1.4,1
-	c3.3,2.4,6.9,4.2,10.8,5.4l1,0.3l-0.1,1c-0.1,1.4,0.3,2.9,1.1,4.1c1.6,2.3,4.4,3.4,7.1,2.7c0.6-0.2,1.2-0.4,1.7-0.7L65.5,72
-	c1.4-0.9,2.3-2.2,2.6-3.8c0.3-1.6-0.1-3.3-1-4.6c-1.6-2.3-4.4-3.3-7.1-2.6c-0.6,0.2-1.2,0.4-1.7,0.7l-10.5,6.7
-	c-1.7,1.1-3.6,1.9-5.6,2.4c-8.9,2.3-18.2-1.2-23.4-8.7c-3.1-4.4-4.4-9.9-3.4-15.3c0.9-5.2,4.1-9.9,8.6-12.7l27.5-17.5
-	c1.7-1.1,3.6-1.9,5.6-2.5c8.9-2.3,18.2,1.2,23.4,8.7c3.2,4.4,4.4,9.9,3.5,15.3c-0.2,0.9-0.4,1.7-0.7,2.6l-0.5,1.6l-1.4-1
-	c-3.3-2.4-6.9-4.2-10.8-5.4l-1-0.3l0.1-1c0.1-1.4-0.3-2.9-1.1-4.1c-1.6-2.3-4.4-3.3-7.1-2.6c-0.6,0.2-1.2,0.4-1.7,0.7L32.4,46.1
-	c-1.4,0.9-2.3,2.2-2.6,3.8s0.1,3.3,1,4.6c1.6,2.3,4.4,3.3,7.1,2.6c0.6-0.2,1.2-0.4,1.7-0.7l10.5-6.7c1.7-1.1,3.6-1.9,5.6-2.5
-	c8.9-2.3,18.2,1.2,23.4,8.7c3.2,4.4,4.4,9.9,3.5,15.3c-0.9,5.2-4.1,9.9-8.6,12.7l-27.5,17.5C44.8,102.5,42.9,103.3,40.9,103.9"
-							/>
-						</svg>
-						<span class="font-semibold tracking-tight text-gray-700 dark:text-gray-100 p-2">SvelteKit Experiments</span
+						><SvelteLogoSvg />
+						<span class="font-semibold tracking-tight text-gray-700 dark:text-gray-100 p-2"
+							>SvelteKit Experiments</span
 						></a
 					>
 					<div class="text-gray-700 dark:text-gray-100 p-2 mx-1">
-						<a href="/about"
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-									clip-rule="evenodd"
-								/>
-							</svg>
-						</a>
+						<a href="/about"><AboutSvg /> </a>
 					</div>
 					<div class="text-gray-700 dark:text-gray-100 mt-2 mx-2">
 						<button type="button" on:click={() => modeStore.update((m) => (m = !m))}>
 							{#if $modeStore === true}
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-6 w-6"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-										clip-rule="evenodd"
-									/>
-								</svg>
+								<LightModeSvg />
 							{:else}
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-6 w-6"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-									/>
-								</svg>
+								<DarkModeSvg />
 							{/if}
 						</button>
 					</div>
@@ -172,7 +107,9 @@
 					<div class="ml-3 relative hidden md:block">
 						{#if $authStore.isLoggedIn}
 							<div class="flex justify-end align-middle items-center">
-								<p class="text-xs text-gray-700 dark:text-gray-100 mx-1">{$authStore.user.displayName}</p>
+								<p class="text-xs text-gray-700 dark:text-gray-100 mx-1">
+									{$authStore.user.displayName}
+								</p>
 								<button
 									type="button"
 									class="max-w-xs bg-gray-800 dark:bg-gray-100 border-0 rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
@@ -200,12 +137,7 @@
 									aria-haspopup="true"
 									on:click={() => signIn()}
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
-										><path fill="none" d="M0 0h24v24H0z" /><path
-											d="M10 11V8l5 4-5 4v-3H1v-2h9zm-7.542 4h2.124A8.003 8.003 0 0 0 20 12 8 8 0 0 0 4.582 9H2.458C3.732 4.943 7.522 2 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-4.478 0-8.268-2.943-9.542-7z"
-											fill="#000"
-										/></svg
-									>
+									<SignInSvg />
 								</button>
 							</div>
 						{/if}
@@ -231,20 +163,7 @@
 									}}
 								>
 									<div class="flex align-middle text-center items-center w-full ">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											class="h-4 w-4"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
-												d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-											/>
-										</svg>
+										<SignOutSvg />
 										<div class="mx-1">Sign out</div>
 									</div>
 								</button>
@@ -263,46 +182,7 @@
 								on:click={() => (showProfile = !showProfile)}
 							>
 								<span class="sr-only">Open main menu</span>
-								<!--
-							Heroicon name: outline/menu
-			  
-							Menu open: "hidden", Menu closed: "block"
-						  -->
-								<svg
-									class="block h-6 w-6"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M4 6h16M4 12h16M4 18h16"
-									/>
-								</svg>
-								<!--
-							Heroicon name: outline/x
-			  
-							Menu open: "block", Menu closed: "hidden"
-						  -->
-								<svg
-									class="hidden h-6 w-6"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M6 18L18 6M6 6l12 12"
-									/>
-								</svg>
+								<MobileMenuBtnSvg />
 							</button>
 						</div>
 					{:else}
@@ -315,12 +195,7 @@
 								aria-haspopup="true"
 								on:click={() => signIn()}
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6"
-									><path fill="none" d="M0 0h24v24H0z" /><path
-										d="M10 11V8l5 4-5 4v-3H1v-2h9zm-7.542 4h2.124A8.003 8.003 0 0 0 20 12 8 8 0 0 0 4.582 9H2.458C3.732 4.943 7.522 2 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10c-4.478 0-8.268-2.943-9.542-7z"
-										fill="#000"
-									/></svg
-								>
+								<SignInSvg />
 							</button>
 						</div>
 					{/if}
@@ -342,20 +217,7 @@
 								}}
 							>
 								<div class="flex align-middle text-center items-center w-full ">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-										/>
-									</svg>
+									<SignOutSvg />
 									<div class="mx-1">Sign out</div>
 								</div>
 							</button>
@@ -365,7 +227,9 @@
 			{/if}
 			<div class="flex-1 py-6 sm:px-6 lg:px-8 bg-gray-200 dark:bg-gray-600">
 				<div class="px-2 py-2 sm:px-0 flex flex-col h-full">
-					<div class="border border-gray-100 dark:border-gray-500 bg-white dark:bg-gray-500 rounded-lg flex-1 p-2 shadow">
+					<div
+						class="border border-gray-100 dark:border-gray-500 bg-white dark:bg-gray-500 rounded-lg flex-1 p-2 shadow"
+					>
 						<slot />
 					</div>
 				</div>
