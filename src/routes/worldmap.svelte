@@ -38,7 +38,11 @@
 	 * where the d3 lib is dynamically loaded and then used for the rendering logic
 	 */
 	import { onMount } from 'svelte';
+	import { v4 as uuid } from '@lukeed/uuid';
 	import Loader from '$lib/Loader.svelte';
+	import { fade } from 'svelte/transition';
+	import MapLegend from '$lib/worldMap/MapLegend.svelte';
+	import MapCircles from '$lib/worldMap/MapCircles.svelte';
 	export let result;
 	const viewBoxConfig = {
 		minX: 0,
@@ -51,6 +55,7 @@
 	let viewBox;
 	let label = 'where surfers live';
 	let baseLayout;
+	let selectionModule;
 	let size;
 	let features: any[] = [];
 	let circleData: any[] = [];
@@ -60,13 +65,15 @@
 	$: viewBox = `${viewBoxConfig.minX} ${viewBoxConfig.minY} ${viewBoxConfig.width} ${viewBoxConfig.height}`;
 	onMount(async () => {
 		Promise.all([
+			import('d3-selection'),
 			import('d3-fetch'),
 			import('d3-geo'),
 			import('d3-scale'),
 			import('d3-scale-chromatic'),
 			import('d3-array')
-		]).then(async ([d3fetch, geo, scale, scaleChromatic, d3Array]) => {
+		]).then(async ([d3selection, d3fetch, geo, scale, scaleChromatic, d3Array]) => {
 			try {
+				selectionModule = d3selection;
 				let projection = geo.geoNaturalEarth1();
 				let pathGenerator = geo.geoPath().projection(projection);
 				baseLayout = pathGenerator({ type: 'Sphere' });
@@ -94,6 +101,7 @@
 				circleData = data.map((d) => ({
 					...d,
 					circle: {
+						id: uuid(),
 						cx: projection([+d.homelon, +d.homelat])[0],
 						cy: projection([+d.homelon, +d.homelat])[1],
 						r: size(+d.n),
@@ -146,40 +154,19 @@
 			<path fill="currentColor" d={baseLayout} class="text-indigo-700" />
 
 			{#each features as { d }}
-				<path fill="currentColor" stroke="black" class="text-gray-300" {d} />
+				<path fill="currentColor" stroke="black" class="text-gray-300" {d} transition:fade />
 			{/each}
 
-			{#each circleData as { circle }}
-				<circle
-					cx={circle.cx}
-					cy={circle.cy}
-					r={circle.r}
-					stroke={circle.stroke}
-					stroke-width={circle.strokeWidth}
-					fill-opacity={circle.fillOpacity}
-				/>
-			{/each}
 			{#if ready}
-				<text
-					text-anchor="end"
-					fill="currentColor"
-					x={viewBoxConfig.width}
-					y={viewBoxConfig.height}
-					width="100%"
-					class="capitalize text-gray-900 text-xs"
-				>
-					{label}
-				</text>
-
-				{#each legendValues as { circle, line, text }}
-					<circle {...circle} />
-					<line {...line} stroke-dasharray={line.strokeDasharray} />
-					<text
-						{...text}
-						alignment-baseline={text.alignmentBaseline}
-						class="capitalize text-gray-900 text-xs">{text.val}</text
-					>
-				{/each}
+				<MapCircles data={circleData} />
+				<MapLegend
+					legendOne={{
+						height: viewBoxConfig.height,
+						width: viewBoxConfig.width,
+						label
+					}}
+					legendTwo={{ data: legendValues }}
+				/>
 			{/if}
 		</svg>
 		{#if !ready}
