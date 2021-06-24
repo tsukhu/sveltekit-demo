@@ -31,7 +31,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Tests setup with Jest & Testing Library
 - [x] Google Maps Integation
 - [x] Tailwind Dark Mode
-- [x] D3 Maps [World Surfers D3 Sample][https://www.d3-graph-gallery.com/graph/bubblemap_template.html] using SvelteKit
+- [x] D3 Maps [World Surfers D3 Sample](https://www.d3-graph-gallery.com/graph/bubblemap_template.html) using SvelteKit
 
 ## Developing
 
