@@ -5,3 +5,4 @@ node_modules
 /functions
 .env
 /.vercel_build_output
+/styles/tailwind-output.css
