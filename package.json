@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.14.5",
     "@sveltejs/adapter-netlify": "^1.0.0-next.17",
     "@sveltejs/adapter-vercel": "next",
-    "@sveltejs/kit": "^1.0.0-next.117",
+    "@sveltejs/kit": "^1.0.0-next.118",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/svelte": "^3.0.3",
     "@types/google.maps": "^3.45.3",
