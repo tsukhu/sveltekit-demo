@@ -154,7 +154,7 @@
 			<path fill="currentColor" d={baseLayout} class="text-indigo-700" />
 
 			{#each features as { d }}
-				<path fill="currentColor" stroke="black" class="text-gray-300" {d} transition:fade />
+				<path fill="currentColor" stroke="black" class="text-gray-300" {d} in:fade />
 			{/each}
 
 			{#if ready}
