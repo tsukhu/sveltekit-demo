@@ -68,7 +68,7 @@
 									<div
 										class={`text-xs md:text-sm px-0 sm:px-4 py-1 rounded ${
 											route.href === $page.path
-												? 'bg-green-500 hover:bg-green-700 text-white'
+												? 'bg-green-700 hover:bg-green-800 text-white'
 												: 'bg-gray-800 hover:text-green-500 text-gray-400'
 										}`}
 									>
@@ -137,7 +137,7 @@
 								<button
 									type="button"
 									class="max-w-xs bg-green-200 border rounded-full flex items-center text-sm focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white shadow"
-									id="user-menu-button"
+									id="user-sign-in-sm"
 									aria-expanded="false"
 									aria-haspopup="true"
 									aria-label="Sign In"
