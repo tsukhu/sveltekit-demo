@@ -93,10 +93,14 @@
 						></a
 					>
 					<div class="text-gray-700 dark:text-gray-100 p-2 mx-1">
-						<a href="/about"><AboutSvg /> </a>
+						<a href="/about" aria-label="About"><AboutSvg /> </a>
 					</div>
 					<div class="text-gray-700 dark:text-gray-100 mt-2 mx-2">
-						<button type="button" on:click={() => modeStore.update((m) => (m = !m))}>
+						<button
+							type="button"
+							on:click={() => modeStore.update((m) => (m = !m))}
+							aria-label={`${modeStore ? 'Turn on Light Mode' : 'Turn on Dark Mode'}`}
+						>
 							{#if $modeStore === true}
 								<LightModeSvg />
 							{:else}
@@ -136,6 +140,7 @@
 									id="user-menu-button"
 									aria-expanded="false"
 									aria-haspopup="true"
+									aria-label="Sign In"
 									on:click={() => signIn()}
 								>
 									<SignInSvg />
