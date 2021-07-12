@@ -1,6 +1,6 @@
 <script lang="ts">
-
 	import { onMount } from 'svelte';
+	import SEO from '$lib/SEO.svelte';
 	import MapComponent from '$lib/MapComponent.svelte';
 	import locationStore from '$stores/locationStore';
 	let error;
@@ -30,15 +30,15 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Map</title>
-</svelte:head>
+<SEO title={'Maps'} description={'Google Maps Demo'} />
 
 <div class="flex align-middle items-center w-full flex-col">
 	<div
 		class="p-4 m-2  border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600 flex-1 w-full flex align-middle items-center justify-between"
 	>
-		<h2 class="font-bold text-center align-middle text-gray-800 dark:text-gray-200 m-1">Google Map</h2>
+		<h2 class="font-bold text-center align-middle text-gray-800 dark:text-gray-200 m-1">
+			Google Map
+		</h2>
 		{#if error}<p class="text-xs text-red-500">{error}</p>{/if}
 		<button
 			on:click={() => {

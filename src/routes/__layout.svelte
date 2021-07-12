@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
 	import '../styles/tailwind-output.css';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/env';

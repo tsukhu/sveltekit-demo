@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
 	import { count } from '$stores/counterStore';
 	import Incrementer from '$lib/Incrementer.svelte';
 	import Decrementer from '$lib/Decrementer.svelte';

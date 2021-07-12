@@ -38,6 +38,7 @@
 	 * where the d3 lib is dynamically loaded and then used for the rendering logic
 	 */
 	import { onMount } from 'svelte';
+	import SEO from '$lib/SEO.svelte';
 	import { v4 as uuid } from '@lukeed/uuid';
 	import Loader from '$lib/Loader.svelte';
 	import { fade } from 'svelte/transition';
@@ -142,9 +143,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Surfers</title>
-</svelte:head>
+<SEO title={'Surfers World'} description={'Surfers D3 Map'} />
 
 <div class="flex justify-center align-middle items-center">
 	<div

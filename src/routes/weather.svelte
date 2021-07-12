@@ -25,6 +25,7 @@
 	import CityWeather from '$lib/CityWeather.svelte';
 	import weatherStore from '$stores/weatherStore';
 	import citiesStore from '$stores/citiesStore';
+	import SEO from '$lib/SEO.svelte';
 	export let data;
 	let cityWeather = {};
 	const getCities = async (selectedCountry: any) => {
@@ -53,12 +54,12 @@
 	$: cities = $citiesStore?.cities ? $citiesStore?.cities : [];
 </script>
 
-<svelte:head>
-	<title>City Weather</title>
-</svelte:head>
+<SEO title={'City Weather'} description={'World City Weather'} />
 
 <div class="flex justify-center align-middle items-center">
-	<div class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600">
+	<div
+		class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600"
+	>
 		<h1 class="p-2 font-bold text-gray-700 dark:text-gray-200">City Weather</h1>
 		<div class="flex flex-wrap gap-2">
 			<Countries

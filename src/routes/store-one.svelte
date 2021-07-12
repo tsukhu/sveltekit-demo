@@ -1,10 +1,9 @@
-<script type="ts">
+<script lang="ts">
 	import SimpleStore from '$lib/SimpleStore.svelte';
+	import SEO from '$lib/SEO.svelte';
 </script>
 
-<svelte:head>
-	<title>Counter App</title>
-</svelte:head>
+<SEO title={'Counter App'} description={'Counter using Store'} />
 
 <div class="flex justify-center align-middle items-center">
 	<div

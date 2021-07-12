@@ -1,12 +1,10 @@
-<script type="ts">
+<script lang="ts">
 	import ModalOne from '$lib/ModalOne.svelte';
-
+	import SEO from '$lib/SEO.svelte';
 	let showModal = false;
 </script>
 
-<svelte:head>
-	<title>Modal</title>
-</svelte:head>
+<SEO title={'Modal Dialog'} description={'Modal Dialog Demo'} />
 
 <div class="flex justify-center align-middle items-center">
 	<div class="flex  flex-col justify-center align-middle items-center p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600">

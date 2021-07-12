@@ -1,5 +1,6 @@
 <script context="module">
 	import { browser, dev } from '$app/env';
+	import SEO from '$lib/SEO.svelte';
 
 	// we don't need any JS on this page, though we'll load
 	// it in dev so that we get hot module replacement...
@@ -14,9 +15,7 @@
 	export const prerender = true;
 </script>
 
-<svelte:head>
-	<title>About</title>
-</svelte:head>
+<SEO title={'About'} description={'About Page'} />
 
 <div class="about-section">
 	<div class="inner-container">

@@ -1,13 +1,12 @@
-<script type="ts">
+<script lang="ts">
 	import { validator } from '$actions/validate';
-
+	import SEO from '$lib/SEO.svelte';
 	let [isValid, validate] = validator();
 	let email = null;
 </script>
 
-<svelte:head>
-	<title>Email Validator</title>
-</svelte:head>
+<SEO title={'Email Validator'} description={'Email Validation App'} />
+
 
 <div class="flex justify-center align-middle items-center">
 	<div

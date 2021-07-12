@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
 	import TodoList from '$lib/TodoList.svelte';
 	import type { TodoType } from '$lib/TodoList.svelte';
 	import { session } from '$app/stores';
