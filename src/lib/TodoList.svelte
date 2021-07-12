@@ -13,20 +13,22 @@
 	export let todo: TodoType;
 </script>
 
-<li in:fade class="flex justify-start align-middle items-center mt-1">
-	<input
-		type="checkbox"
-		role="checkbox"
-		checked={todo.done}
-		aria-checked={todo.done}
-		on:change={() => dispatchEvent('toggleDone')}
-		class="rounded text-indigo-500 p-2 m-2"
-	/>
-	<span
-		class={`${
-			todo.done ? 'text-gray-500 dark:text-gray-200 line-through italic' : 'text-gray-800'
-		} p-2 text-left flex-1 text-sm`}>{todo.text}</span
-	>
+<li in:fade class="flex justify-between align-middle items-center mt-1">
+	<label>
+		<input
+			type="checkbox"
+			role="checkbox"
+			checked={todo.done}
+			aria-checked={todo.done}
+			on:change={() => dispatchEvent('toggleDone')}
+			class="rounded text-indigo-500 p-2 m-2"
+		/>
+		<span
+			class={`${
+				todo.done ? 'text-gray-500 dark:text-gray-200 line-through italic' : 'text-gray-800'
+			} p-2 text-left flex-1 text-sm`}>{todo.text}</span
+		>
+	</label>
 	<button
 		on:click={() => dispatchEvent('delete')}
 		aria-label="Delete Todo"
@@ -42,5 +44,6 @@
 				d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
 				clip-rule="evenodd"
 			/>
-		</svg></button>
+		</svg></button
+	>
 </li>
