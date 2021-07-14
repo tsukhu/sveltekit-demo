@@ -9,7 +9,8 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [
 		preprocess({
-			postcss: true
+			postcss: true,
+			preserve: ['module']
 		})
 	],
 
@@ -21,7 +22,7 @@ const config = {
 			resolve: {
 				alias: {
 					$stores: resolve('./src/stores'),
-					$actions: resolve('./src/actions'),
+					$actions: resolve('./src/actions')
 				}
 			}
 		}

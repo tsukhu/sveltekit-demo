@@ -19,7 +19,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Todo App: Simple Todo app
 - [x] Load App: Reactive Declarations based Loan App
 - [x] Counter App: Simple Store base Counter App
-- [x] Photo Album: Server side load() 
+- [x] Photo Album: Server side load()
 - [x] Modal Dialog: Modal Dialog using Event Dispatcher
 - [x] Blog Posts/Dynamic Slug: Server side load()
 - [x] Email Validation and Tooltip - Svelte Actions
@@ -33,6 +33,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Tailwind Dark Mode
 - [x] D3 Maps [World Surfers D3 Sample](https://www.d3-graph-gallery.com/graph/bubblemap_template.html) using SvelteKit for declarative syntax and Svelte Animation integration
 - [x] Basic SEO handling added. For a detailed implementation recommended to take a look at Rodneys example [SvelteKit-SEO](https://github.com/rodneylab/sveltekit-seo)
+- [x] Stencil SSR via [Hydrate App](https://stenciljs.com/docs/hydrate-app#hydrate-app)
 
 ## Developing
 
@@ -58,4 +59,6 @@ npm run build
 ## Known Issues
 
 - World Map Sample
-    - [viteJS D3 issue](https://github.com/vitejs/vite/issues/2393)
+  - [viteJS D3 issue](https://github.com/vitejs/vite/issues/2393)
+- Stencil SSR Integration
+  - Hit an issue when using the Stencil SSR Hydrate App code directly. Using a workaround . [See here](https://github.com/vitejs/vite/issues/2579). Using a published npm module instead of my web component hydrate code `stensvelte_hydrate`

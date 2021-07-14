@@ -26,7 +26,8 @@
 		{ href: '/posts', name: 'Posts', tooltip: 'Blog Posts' },
 		{ href: '/weather', name: 'Weather', tooltip: 'Weather' },
 		{ href: '/map', name: 'Map', tooltip: 'map' },
-		{ href: '/worldmap', name: 'World Surfers', tooltip: 'D3 World Map' }
+		{ href: '/worldmap', name: 'World Surfers', tooltip: 'D3 World Map' },
+		{ href: '/stensvelte', name: 'Stencil SSR', tooltip: 'Stencil SSR Integration' },
 	];
 	$: browser ? console.log(getAppAuth().currentUser) : console.log('on server');
 	$: if (browser && $modeStore === true) {
