@@ -23,12 +23,6 @@
 	export let html;
 </script>
 
-<!-- <svelte:head>
-	<script
-		type="module"
-		src="https://unpkg.com/stensvelte@0.0.2/dist/stensvelte/stensvelte.esm.js"></script>
-</svelte:head> -->
-
 <SEO title={'Stencil Svelte'} description={'Stencil Svelte Demo'} />
 
 <div class="flex justify-center align-middle items-center">
