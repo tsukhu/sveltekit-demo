@@ -5,8 +5,10 @@ import type { EndpointOutput } from '@sveltejs/kit';
 // https://github.com/vitejs/vite/issues/2579
 import { renderToString, HydrateResults } from 'stensvelte_hydrate';
 export const get = async (): Promise<EndpointOutput> => {
+	const first = "Stencil SSR";
+	const last = `'Don't call me a framework' JS`;
 	const { html } = (await renderToString(
-		`<my-component first="Stencil" last="'Don't call me a framework' JS" />`,
+		`<my-component first="${first}" last="${last}" />`,
 		{
 			prettyHtml: true
 		}
@@ -15,7 +17,9 @@ export const get = async (): Promise<EndpointOutput> => {
 	return new Promise((resolve) => {
 		resolve({
 			body: {
-				html
+				html,
+				first,
+				last
 			}
 		});
 	});
