@@ -35,6 +35,23 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Basic SEO handling added. For a detailed implementation recommended to take a look at Rodneys example [SvelteKit-SEO](https://github.com/rodneylab/sveltekit-seo)
 - [x] Stencil SSR via [Hydrate App](https://stenciljs.com/docs/hydrate-app#hydrate-app)
 
+## Pre-requisites
+
+- Enable **Google Sign-In** in the Firebase console:
+  - In the [Firebase console](https://console.firebase.google.com/), open the **Auth** section.
+  - On the Sign in method tab, enable the **Google sign-in** method and click **Save*.
+
+- Add the Firebase configuration in the following format in the .env file at the root of the project: 
+- These details are available on the [Firebase console](https://console.firebase.google.com/) -> Project -> Project Settings
+
+```
+VITE_FIREBASE_API_KEY=<FIREBASE_API_KEY>
+VITE_FIREBASE_AUTH_DOMAIN=<FIREBASE_AUTH_DOMAIN>
+VITE_FIREBASE_PROJECT_ID=<FIREBASE_PROJECT_ID>
+VITE_FIREBASE_STORAGE_BUCKET=<FIREBASE_STORAGE_BUCKET>
+VITE_FIREBASE_MESSAGING_SENDER_ID=<FIREBASE_MESSAGING_SENDER_ID>
+VITE_FIREBASE_APP_ID=<FIREBASE_APP_ID>
+```
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
