@@ -39,7 +39,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 
 - Enable **Google Sign-In** in the Firebase console:
   - In the [Firebase console](https://console.firebase.google.com/), open the **Auth** section.
-  - On the Sign in method tab, enable the **Google sign-in** method and click **Save*.
+  - On the Sign in method tab, enable the **Google sign-in** method and click **Save**.
 
 - Add the Firebase configuration in the following format in the .env file at the root of the project: 
 - These details are available on the [Firebase console](https://console.firebase.google.com/) -> Project -> Project Settings
