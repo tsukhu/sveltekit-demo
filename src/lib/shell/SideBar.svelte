@@ -26,7 +26,7 @@
 			>
 				{#each routes as route}
 					<li
-						class="mb-4 text-center relative "
+						class="mb-4 text-center relative cursor-pointer"
 						use:tooltip={{ content: Tooltip, text: route.tooltip }}
 					>
 						<a sveltekit:prefetch href={route.href}>
