@@ -14,13 +14,14 @@
 		{ href: '/map', name: 'Map', tooltip: 'map' },
 		{ href: '/worldmap', name: 'World Surfers', tooltip: 'D3 World Map' },
 		{ href: '/stensvelte', name: 'Stencil SSR', tooltip: 'Stencil SSR Integration' },
-		{ href: '/parallax', name: 'Parallax', tooltip: 'Parallax' }
+		{ href: '/parallax', name: 'Parallax', tooltip: 'Parallax' },
+		{ href: '/form-builder', name: 'Form Builder', tooltip: 'Form Builder' },
 	];
 </script>
 
 <!-- Sidebar -->
 <nav class="bg-gray-900 w-2/12 justify-between flex flex-col h-full">
-	<div class="mt-10 mb-10">
+	<div class="mt-5 mb-5">
 		<div class="mt-10">
 			<ul
 				class="flex flex-col flex-wrap align-middle items-left text-sm font-semibold justify-around mx-2"

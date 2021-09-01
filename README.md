@@ -35,6 +35,7 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Basic SEO handling added. For a detailed implementation recommended to take a look at Rodneys example [SvelteKit-SEO](https://github.com/rodneylab/sveltekit-seo)
 - [x] Stencil SSR via [Hydrate App](https://stenciljs.com/docs/hydrate-app#hydrate-app)
 - [x] Parallax Scrolling
+- [x] Basic Form Builder using svelte dynamic components, events and tailwind forms
 
 ## Pre-requisites
 
