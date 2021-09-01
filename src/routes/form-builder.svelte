@@ -80,9 +80,8 @@
 	};
 
 	let formValues = {};
-	const setFormValues = data => formValues = data;
+	const setFormValues = (data) => (formValues = data);
 	let loginForm = generateForm(setFormValues);
-
 </script>
 
 <SEO title={'Form Builder'} description={'Form Builder App'} />
@@ -94,9 +93,7 @@
 		<div class="antialiased text-gray-900 px-6">
 			<div class="mx-auto m-2 text-sm">
 				<h2 class="text-2xl font-bold text-gray-700 dark:text-gray-200">Dynamic Form</h2>
-				<p class="mt-2 text-lg text-gray-500 dark:text-gray-100">
-					Dynamic Tailwind 
-				</p>
+				<p class="mt-2 text-lg text-gray-500 dark:text-gray-100">Dynamic Tailwind</p>
 				<form on:submit|preventDefault={loginForm.submitHandler}>
 					{#each loginForm.fields as { schema, name, id } (id)}
 						<FormInput
@@ -111,7 +108,6 @@
 						{/each}
 					</div>
 				</form>
-				
 			</div>
 			<div class="max-w-4xl py-2">
 				<h2 class="text-2xl font-bold text-gray-700 dark:text-gray-200">Form Output</h2>
