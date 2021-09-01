@@ -93,7 +93,7 @@
 		<div class="antialiased text-gray-900 px-6">
 			<div class="mx-auto m-2 text-sm">
 				<h2 class="text-2xl font-bold text-gray-700 dark:text-gray-200">Dynamic Form</h2>
-				<p class="mt-2 text-lg text-gray-500 dark:text-gray-100">Dynamic Tailwind</p>
+				<p class="mt-2 text-lg text-gray-500 dark:text-gray-100">API Based Forms</p>
 				<form on:submit|preventDefault={loginForm.submitHandler}>
 					{#each loginForm.fields as { schema, name, id } (id)}
 						<FormInput

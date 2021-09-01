@@ -11,7 +11,7 @@
 </script>
 
 <label class="block text-sm dark:bg-gray-700 dark:text-gray-100">
-	<span class="text-gray-700 dark:text-gray-100">{label}</span>
+	<span class="text-gray-700 dark:text-gray-100 font-semibold">{label}</span>
 	<input
 		{type}
 		{multiple}

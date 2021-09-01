@@ -19,7 +19,7 @@
 
 {#if multiple}
 	<label class="block text-sm">
-		<span class="text-gray-700 dark:text-gray-100 ">{label}</span>
+		<span class="text-gray-700 dark:text-gray-100 font-semibold">{label}</span>
 
 		<select
 			class={`form-multiselect block w-full mt-1 dark:bg-gray-700 dark:text-gray-100 text-sm`}
