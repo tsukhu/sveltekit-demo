@@ -63,9 +63,7 @@
     "firebase": "^9.6.1",
     "graphql": "^16.2.0",
     "graphql-request": "^3.7.0",
-    "stensvelte_hydrate": "0.0.2",
-    "topojson": "^3.0.2",
-    "topojson-client": "^3.1.0"
+    "stensvelte_hydrate": "0.0.2"
   },
   "jest": {
     "transform": {
