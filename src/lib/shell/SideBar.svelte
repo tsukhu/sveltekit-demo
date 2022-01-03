@@ -34,7 +34,7 @@
 						<a sveltekit:prefetch href={route.href}>
 							<div
 								class={`text-xs md:text-sm px-0 sm:px-4 py-1 rounded ${
-									route.href === $page.path
+									route.href === $page.url.pathname
 										? 'bg-green-700 hover:bg-green-800 text-white'
 										: 'bg-gray-800 hover:text-green-500 text-gray-400'
 								}`}
