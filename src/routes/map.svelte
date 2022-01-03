@@ -14,7 +14,7 @@
 		} else {
 			ready = true;
 		}
-		window.initMap = () => {
+		(window as any).initMap = () => {
 			ready = true;
 		};
 	});

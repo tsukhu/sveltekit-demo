@@ -11,7 +11,7 @@
 	height="30px"
 	width="30px"
 >
-	<style type="text/css">
+	<style lang="css">
 		.st0 {
 			fill: #ff3e00;
 		}
