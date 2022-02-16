@@ -83,8 +83,8 @@
     "moduleNameMapper": {
       "^\\$lib(.*)$": "<rootDir>/src/lib$1",
       "^\\$app(.*)$": [
-        ".svelte/dev/runtime/app/*",
-        ".svelte/build/runtime/app/*"
+        "<rootDir>/.svelte-kit/dev/runtime/app$1",
+        "<rootDir>/.svelte-kit/runtime/app$1"
       ]
     },
     "testEnvironment": "jsdom"
