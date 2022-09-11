@@ -21,7 +21,9 @@
 			"$lib/*": ["./src/lib/*"],
 			"$src/*": ["./src/*"],
 			"$tests": ["tests"],
-			"$tests/*": ["tests/*"]
+			"$tests/*": ["tests/*"],
+			"$stores/*": ["src/stores/*"],
+			"$actions/*": ["src/actions/*"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

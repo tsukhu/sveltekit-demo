@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { getAppAuth, signIn } from '$lib/Auth';
 	import authStore from '$stores/authStore';
 	import modeStore from '$stores/modeStore';
@@ -23,7 +23,7 @@
 	class="flex items-center justify-between flex-wrap bg-gray-50 dark:bg-gray-900 dark:text-white p-2 align-middle"
 >
 	<div class="flex items-center flex-no-shrink text-white flex-1 justify-start mr-6">
-		<a sveltekit:prefetch href="/" class="flex flex-1"
+		<a data-sveltekit-prefetch href="/" class="flex flex-1"
 			><SvelteLogoSvg />
 			<span class="font-semibold tracking-tight text-gray-700 dark:text-gray-100 p-2"
 				>SvelteKit Experiments</span

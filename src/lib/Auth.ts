@@ -6,7 +6,7 @@ import {
 	FIREBASE_PROJECT_ID,
 	FIREBASE_STORAGE_BUCKET
 } from '$lib/Env';
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { getApps, getApp, initializeApp } from '@firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
 import type { FirebaseOptions } from '@firebase/app';

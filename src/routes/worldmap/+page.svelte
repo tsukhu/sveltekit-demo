@@ -1,35 +1,3 @@
-<script context="module">
-	// this is runned on load (check svelKit doc)
-	export async function load({ fetch }) {
-		let dataGeo;
-		const urls = [
-			'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
-		];
-		const getFetchResults = async (url, type) => {
-			let result;
-			let headers =
-				type === 'json'
-					? { 'content-type': 'application/json' }
-					: { 'content-type': 'text/csv;charset=UTF-8' };
-			try {
-				const data = await fetch(url, headers);
-				result = type === 'json' ? await data.json() : await data.text();
-			} catch (e) {
-				console.log(e);
-			}
-			return result;
-		};
-		dataGeo = await getFetchResults(urls[0], 'json');
-		return {
-			props: {
-				result: {
-					dataGeo
-				}
-			}
-		};
-	}
-</script>
-
 <script lang="ts">
 	/**
 	 * https://github.com/vitejs/vite/issues/2393
@@ -44,7 +12,8 @@
 	import { fade } from 'svelte/transition';
 	import MapLegend from '$lib/worldMap/MapLegend.svelte';
 	import MapCircles from '$lib/worldMap/MapCircles.svelte';
-	export let result;
+	export let data;
+	$: ({result} = data);
 	const viewBoxConfig = {
 		minX: 0,
 		minY: 0,

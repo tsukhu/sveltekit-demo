@@ -1,7 +1,6 @@
 <script lang="ts">
 	import TodoList from '$lib/TodoList.svelte';
 	import type { TodoType } from '$lib/TodoList.svelte';
-	import { session } from '$app/stores';
 
 	let lastId = 0;
 	const createTodo = (text, done = false): TodoType => ({ id: ++lastId, text, done });
@@ -29,7 +28,7 @@
 <h2 class="font-bold text-center align-middle text-gray-800 dark:text-gray-100">To Do App</h2>
 <div class="flex-1 px-2 py-3 text-xs text-green-700 dark:text-green-200 flex justify-between">
 	<div class="text-gray-700 dark:text-gray-50 uppercase font-semibold mx-1">user id</div>
-	{$session.user.userid}
+	{'ADD USER ID'}
 </div>
 <div class="italic text-xs flex justify-start align-middle items-center">
 	<div class="flex-1 px-2 py-3 text-gray-500 dark:text-gray-100">{status}</div>

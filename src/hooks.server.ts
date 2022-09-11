@@ -20,14 +20,3 @@ export const handle = async ({ event, resolve }) => {
 
 	return response;
 };
-
-export const getSession = (event) => {
-	return {
-		user: {
-			// only include properties needed client-side —
-			// exclude anything else attached to the user
-			// like access tokens etc
-			userid: event.locals?.userid??null,
-		}
-	};
-};

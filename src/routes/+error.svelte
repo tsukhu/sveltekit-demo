@@ -1,28 +1,19 @@
-<script context="module">
-	export function load({ error, status }) {
-		return {
-			props: {
-				title: `${status}: ${error.message}`
-			}
-		};
-	}
+<script>
+	import { page } from '$app/stores';
 </script>
 
-<script>
-	export let title;
-</script>
 
 <div class="bg-gradient-to-r from-purple-300 to-blue-200 rounded">
 	<div class="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center rounded">
 		<div class="bg-white shadow overflow-hidden rounded sm:rounded-lg pb-8">
 			<div class="border-t border-gray-200 text-center pt-8">
 				<div class="text-center justify-center align-middle items-center flex w-full"><img src="/404.png" alt="404" /></div>
-				<h1 class="text-2xl md:text-6xl font-medium py-8 text-gray-700 capitalize">oops! Page not found</h1>
+				<h1 class="text-2xl md:text-6xl font-medium py-8 text-gray-700 capitalize">oops! Error Encountered</h1>
 				<p class="text-xl md:text-2xl pb-8 px-12 font-medium text-gray-500">
-					Oops! The page you are looking for does not exist. It might have been moved or deleted.
+					{$page.error.message}
 				</p>
 				<p class="text-xl md:text-2xl pb-8 px-12 font-medium text-gray-500">
-					{title}
+					{$page.status}
 				</p>
 				<a
 					href="/"

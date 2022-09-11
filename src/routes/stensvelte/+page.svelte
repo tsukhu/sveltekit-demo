@@ -1,30 +1,9 @@
-<script context="module">
-	export async function load({ fetch }) {
-		let result;
-		// SSR enabled stencil sample web component
-		// via the hydrate app feature in stencil
-		try {
-			const res = await fetch(`/api/stensvelteSSR`);
-			result = await res.json();
-		} catch (e) {
-			console.log(e);
-		}
-		return {
-			props: {
-				html: result.html,
-				first: result.first,
-				last: result.last
-			}
-		};
-	}
-</script>
-
-<script lang="ts">
+<script>
 	import SEO from '$lib/SEO.svelte';
-	import { browser } from '$app/env';
-	export let html;
-	export let first;
-	export let last;
+	import { browser } from '$app/environment';
+	export let data;
+	$: ({html,first,last} = data);
+	
 	let component;
 	$: if (browser) {
 		component = `<my-component first="${first}" last="${last}" />`;

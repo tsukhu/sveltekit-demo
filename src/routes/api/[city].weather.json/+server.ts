@@ -1,5 +1,6 @@
 import { request, gql } from 'graphql-request';
-import type { EndpointOutput, Request } from '@sveltejs/kit';
+import { json as json$1 } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 const query = gql`
 	query WeatherQuery($name: String!) {
 		getCityByName(name: $name) {
@@ -34,27 +35,22 @@ const getWeatherForCity = async (city: string) => {
 	};
 };
 
-export const get = async ({ params, locals }: Request): Promise<EndpointOutput> => {
-	// user must have a cookie set
-	if (!locals.userid) {
-		return { status: 401 };
+export const GET: RequestHandler = async (event) => {
+	if (!event.locals['isLoggedIn']) {
+		return new Response(undefined, { status: 401 });
 	}
 
-	const { city } = params;
+	const { city } = event.params;
 	let error = false;
 	const data: any = await getWeatherForCity(city).catch(() => (error = true));
 	if (data.weather !== null) {
-		return {
-			body: {
-				data: data.weather
-			}
-		};
+		return json$1({
+			data: data.weather
+		});
 	} else {
-		return {
-			body: {
-				data: null,
-				error
-			}
-		};
+		return json$1({
+			data: null,
+			error
+		});
 	}
 };

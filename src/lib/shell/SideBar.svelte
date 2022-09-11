@@ -31,7 +31,7 @@
 						class="mb-4 text-center relative cursor-pointer"
 						use:tooltip={{ content: Tooltip, text: route.tooltip }}
 					>
-						<a sveltekit:prefetch href={route.href}>
+						<a data-sveltekit-prefetch href={route.href}>
 							<div
 								class={`text-xs md:text-sm px-0 sm:px-4 py-1 rounded ${
 									route.href === $page.url.pathname

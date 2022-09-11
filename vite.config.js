@@ -9,7 +9,9 @@ const config = {
 	},
 	resolve: {
 		alias: {
-			$src: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src')
+			$src: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src'),
+			$stores: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src', 'stores'),
+			$actions: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src', 'actions')
 		}
 	}
 };

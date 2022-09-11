@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { getAppAuth } from '$lib/Auth';
 	import SideBar from './SideBar.svelte';
 	import Header from './Header.svelte';
