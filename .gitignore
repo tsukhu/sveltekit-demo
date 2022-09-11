@@ -5,5 +5,4 @@ node_modules
 /functions
 .env
 /.vercel_build_output
-/src/styles/tailwind-output.css
 yarn.lock
