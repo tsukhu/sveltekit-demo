@@ -1,11 +1,4 @@
-import {
-	FIREBASE_API_KEY,
-	FIREBASE_APP_ID,
-	FIREBASE_AUTH_DOMAIN,
-	FIREBASE_MESSAGING_SENDER_ID,
-	FIREBASE_PROJECT_ID,
-	FIREBASE_STORAGE_BUCKET
-} from '$lib/Env';
+import { env } from '$env/dynamic/public';
 import { browser } from '$app/environment';
 import { getApps, getApp, initializeApp } from '@firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
@@ -13,12 +6,12 @@ import type { FirebaseOptions } from '@firebase/app';
 import type { Auth, UserCredential } from '@firebase/auth';
 
 const config: FirebaseOptions = {
-	apiKey: FIREBASE_API_KEY as string,
-	authDomain: FIREBASE_AUTH_DOMAIN as string,
-	projectId: FIREBASE_PROJECT_ID as string,
-	storageBucket: FIREBASE_STORAGE_BUCKET as string,
-	messagingSenderId: FIREBASE_MESSAGING_SENDER_ID as string,
-	appId: FIREBASE_APP_ID as string
+	apiKey: env.PUBLIC_FIREBASE_API_KEY as string,
+	authDomain: env.PUBLIC_FIREBASE_AUTH_DOMAIN as string,
+	projectId: env.PUBLIC_FIREBASE_PROJECT_ID as string,
+	storageBucket: env.PUBLIC_FIREBASE_STORAGE_BUCKET as string,
+	messagingSenderId: env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID as string,
+	appId: env.PUBLIC_FIREBASE_APP_ID as string
 };
 
 if (browser && !getApps().length) {

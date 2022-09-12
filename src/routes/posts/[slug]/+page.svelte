@@ -1,7 +1,7 @@
 <script>
 	import SEO from '$lib/SEO.svelte';
-	let data;
-	$: ({post,slug} = data);
+	export let data;
+	$: ({ post, slug } = data);
 </script>
 
 <SEO title={`Posts/${slug}`} description={`Blog Post:${slug}`} />

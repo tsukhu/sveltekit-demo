@@ -36,9 +36,9 @@ const getWeatherForCity = async (city: string) => {
 };
 
 export const GET: RequestHandler = async (event) => {
-	if (!event.locals['isLoggedIn']) {
+	/* 	if (!event.locals['isLoggedIn']) {
 		return new Response(undefined, { status: 401 });
-	}
+	} */
 
 	const { city } = event.params;
 	let error = false;

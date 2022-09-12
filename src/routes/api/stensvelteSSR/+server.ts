@@ -2,7 +2,7 @@
 // StencilJS Generated SSR hydrate function.
 // as an example pulished the hydrate function as a module
 // https://github.com/vitejs/vite/issues/2579
-import { renderToString, HydrateResults } from 'stensvelte_hydrate';
+import { renderToString, type HydrateResults } from 'stensvelte_hydrate';
 import { json as json$1 } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 export const GET: RequestHandler = async () => {
@@ -12,14 +12,9 @@ export const GET: RequestHandler = async () => {
 		prettyHtml: true
 	})) as HydrateResults;
 
-	const result = new Promise((resolve) => {
-		resolve({
-			body: {
-				html,
-				first,
-				last
-			}
-		});
+	return json$1({
+		html,
+		first,
+		last
 	});
-	return json$1(result);
 };
