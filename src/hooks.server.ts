@@ -5,11 +5,6 @@ export const handle = async ({ event, resolve }) => {
 	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
 	event.locals.userid = cookies.userid || uuid();
 
-	// TODO https://github.com/sveltejs/kit/issues/1046
-	if (event.url.searchParams.has('_method')) {
-		event.method = event.url.searchParams.get('_method').toUpperCase();
-	}
-
 	const response = await resolve(event);
 
 	if (!cookies.userid) {
