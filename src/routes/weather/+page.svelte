@@ -5,8 +5,10 @@
 	import weatherStore from '$stores/weatherStore';
 	import citiesStore from '$stores/citiesStore';
 	import SEO from '$lib/SEO.svelte';
+	import Loader from '$lib/Loader.svelte';
 	export let data;
-	$: ({weather} = data);
+	let loading = false;
+	$: ({ weather } = data);
 	let cityWeather = {};
 	const getCities = async (selectedCountry: any) => {
 		let data;
@@ -41,6 +43,7 @@
 		class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600"
 	>
 		<h1 class="p-2 font-bold text-gray-700 dark:text-gray-200">City Weather</h1>
+
 		<div class="flex flex-wrap gap-2">
 			<Countries
 				data={weather}
@@ -54,26 +57,32 @@
 						state.result = null;
 						return state;
 					});
+					loading = true;
 					let data = await getCities(e.detail);
-					console.log(data);
 					citiesStore.set({ countryCode: e.detail, cities: data.cities });
+					loading = false;
 				}}
 			/>
-			<Cities
-				data={cities}
-				on:selectedCity={async (e) => {
-					weatherStore.update((state) => {
-						state.loading = true;
-						return state;
-					});
-					cityWeather = await getCityWeather(e.detail);
-					weatherStore.update((state) => {
-						state.loading = false;
-						state.result = cityWeather;
-						return state;
-					});
-				}}
-			/>
+			<div class="flex items-center ">
+				<div class="relative">
+					<Cities
+						data={cities}
+						on:selectedCity={async (e) => {
+							weatherStore.update((state) => {
+								state.loading = true;
+								return state;
+							});
+							cityWeather = await getCityWeather(e.detail);
+							weatherStore.update((state) => {
+								state.loading = false;
+								state.result = cityWeather;
+								return state;
+							});
+						}}
+					/>
+					{#if loading}<div class="absolute right-1 top-7"><Loader /></div>{/if}
+				</div>
+			</div>
 		</div>
 		<div class="flex">
 			<CityWeather />
