@@ -38,11 +38,9 @@
 
 <SEO title={'City Weather'} description={'World City Weather'} />
 
-<div class="flex justify-center align-middle items-center">
-	<div
-		class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600"
-	>
-		<h1 class="p-2 font-bold text-gray-700 dark:text-gray-200">City Weather</h1>
+<div class="flex justify-center align-middle items-center gap-4">
+	<div class="p-8 m-2 bg-base-300 rounded shadow ">
+		<h1 class="p-2 font-bold text-base-content text-4xl text-center m-2">City Weather</h1>
 
 		<div class="flex flex-wrap gap-2">
 			<Countries
@@ -51,7 +49,7 @@
 					if (e.detail === $citiesStore?.countryCode) {
 						return;
 					}
-					citiesStore.set({ countryCode: e.detail, cities: null });
+					citiesStore.set({ countryCode: e.detail, cities: [] });
 					weatherStore.update((state) => {
 						state.loading = false;
 						state.result = null;
@@ -72,7 +70,9 @@
 								state.loading = true;
 								return state;
 							});
+							console.log(e);
 							cityWeather = await getCityWeather(e.detail);
+							console.log(cityWeather);
 							weatherStore.update((state) => {
 								state.loading = false;
 								state.result = cityWeather;

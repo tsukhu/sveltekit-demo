@@ -9,12 +9,12 @@
 		dispatchEvent('selectedCity', $cityStore.name);
 	}
 	$: if (data && data.length === 0) {
-		cityStore.set(null);
+		cityStore.set([]);
 	}
 </script>
 
 <div class="flex flex-col align-middle items-start justify-start">
-	<p class="mx-2 text-sm font-bold">Cities</p>
+	<p class="mx-2 text-sm font-semibold">Cities</p>
 	<div>
 		{#if data}
 			<AutoComplete
@@ -23,7 +23,7 @@
 				labelFieldName="name"
 				placeholder="Select City"
 				disabled={data === null || (data && data.length === 0)}
-				className="w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm border border-indigo-200 shadow outline-none  focus:outline-none focus:ring mx-2"
+				className="w-full md:w-80 placeholder-blueGray-300 text-blueGray-600 rounded text-sm shadow outline-none  focus:outline-none focus:ring mx-2"
 			/>
 		{/if}
 	</div>
