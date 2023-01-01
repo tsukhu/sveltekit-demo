@@ -41,6 +41,7 @@
 		"@tailwindcss/forms": "^0.5.3",
 		"cities.json": "^1.1.16",
 		"countries-list": "^2.6.1",
+		"d3": "^7.8.0",
 		"daisyui": "^2.46.0",
 		"firebase": "^9.15.0",
 		"graphql-request": "^5.1.0",
