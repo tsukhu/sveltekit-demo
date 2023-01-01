@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { count } from '../stores/counterStore';
+	import { count } from '$stores/counterStore';
 	import Incrementer from './Incrementer.svelte';
 	import Decrementer from './Decrementer.svelte';
 	import Resetter from './Resetter.svelte';

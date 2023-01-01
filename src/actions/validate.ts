@@ -1,24 +1,17 @@
-import { writable } from 'svelte/store';
-
-export function validator() {
-	const { subscribe, set } = writable(false);
-
-	const action = (node: HTMLElement) => {
-		function _v(e: any) {
-			const value = e.target.value;
-			const result =
-				value &&
-				!!value.match(
-					/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-				);
-			set(result);
+function buildValidator(validators: any[]) {
+	return function validate(value: string, dirty: boolean) {
+		if (!validators || validators.length === 0) {
+			return { dirty, valid: true };
 		}
-		node.addEventListener('change', _v);
+
+		const failing = validators.find((v) => v(value) !== true);
 
 		return {
-			destroy: () => node.removeEventListener('change', _v)
+			dirty,
+			valid: !failing,
+			message: failing && failing(value)
 		};
 	};
-
-	return [{ subscribe }, action];
 }
+
+export { buildValidator };

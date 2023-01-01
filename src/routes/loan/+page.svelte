@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import SEO from '../../components/SEO.svelte';
-	import Loan from '../../components/Loan.svelte';
-	import authStore from '../../stores/authStore';
+	import SEO from '$components/SEO.svelte';
+	import Loan from '$components/Loan.svelte';
+	import authStore from '$stores/authStore';
 	let error = false;
 
 	authStore.subscribe(async ({ isLoggedIn, firebaseControlled }) => {

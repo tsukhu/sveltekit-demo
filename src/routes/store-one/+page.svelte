@@ -1,6 +1,6 @@
 <script lang="ts">
-	import SimpleStore from '../../components/SimpleStore.svelte';
-	import SEO from '../../components/SEO.svelte';
+	import SimpleStore from '$components/SimpleStore.svelte';
+	import SEO from '$components/SEO.svelte';
 </script>
 
 <SEO title={'Counter App'} description={'Counter using Store'} />

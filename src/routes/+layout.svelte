@@ -1,9 +1,9 @@
 <script>
 	import '../app.css';
 	import { page } from '$app/stores';
-	import { getAppAuth, signIn } from '../Auth';
-	import authStore from '../stores/authStore';
-	import SvelteLogoSvg from '../components/SvelteLogoSVG.svelte';
+	import { getAppAuth, signIn } from '$src/Auth';
+	import authStore from '$stores/authStore';
+	import SvelteLogoSvg from '$components/SvelteLogoSVG.svelte';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	const routes = [

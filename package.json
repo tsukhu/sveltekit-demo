@@ -44,6 +44,7 @@
 		"daisyui": "^2.46.0",
 		"firebase": "^9.15.0",
 		"graphql-request": "^5.1.0",
+		"simple-svelte-autocomplete": "^2.5.1",
 		"stensvelte_hydrate": "^0.0.2",
 		"theme-change": "^2.2.0"
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { count } from '../stores/counterStore';
+	import { count } from '$stores/counterStore';
 
 	function reset() {
 		count.set(0);

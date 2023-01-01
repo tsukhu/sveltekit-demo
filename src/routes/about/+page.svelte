@@ -1,5 +1,5 @@
 <script>
-	import SEO from '../../components/SEO.svelte';
+	import SEO from '$components/SEO.svelte';
 </script>
 
 <SEO title={'About'} description={'About Page'} />
