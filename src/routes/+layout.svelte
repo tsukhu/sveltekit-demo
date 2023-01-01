@@ -103,10 +103,10 @@
 		<label for="my-drawer-2" class="drawer-overlay" />
 		<ul class="menu p-4 w-72 bg-base-200 text-base-content">
 			<!-- Sidebar content here -->
-			<div class="mt-12">
+			<div class="mt-12 space-y-2">
 				{#each routes as route}
 					<li>
-						<a href={route.href}>
+						<a href={route.href} class:active={$page.url.pathname === route.href}>
 							{route.name}
 						</a>
 					</li>
