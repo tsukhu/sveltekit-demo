@@ -17,6 +17,7 @@
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
+		"@tailwindcss/typography": "^0.5.8",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.13",
@@ -38,8 +39,12 @@
 	"dependencies": {
 		"@lukeed/uuid": "^2.0.0",
 		"@tailwindcss/forms": "^0.5.3",
+		"cities.json": "^1.1.16",
+		"countries-list": "^2.6.1",
 		"daisyui": "^2.46.0",
 		"firebase": "^9.15.0",
+		"graphql-request": "^5.1.0",
+		"stensvelte_hydrate": "^0.0.2",
 		"theme-change": "^2.2.0"
 	}
 }

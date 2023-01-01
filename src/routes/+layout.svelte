@@ -89,11 +89,14 @@
 							{:else}
 								<li><button on:click={() => signIn()}>Login</button></li>
 							{/if}
+							<li>
+								<a href="/about"> About </a>
+							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="flex w-full h-full items-center justify-center"><slot /></div>
+			<div class="flex w-full h-full items-center justify-center overflow-y-auto"><slot /></div>
 		</div>
 	</div>
 	<div class="drawer-side">
