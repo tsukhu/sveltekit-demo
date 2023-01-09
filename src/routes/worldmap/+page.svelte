@@ -6,14 +6,14 @@
 	 * where the d3 lib is dynamically loaded and then used for the rendering logic
 	 */
 	import { onMount } from 'svelte';
-	import SEO from '$lib/SEO.svelte';
+	import SEO from '$components/SEO.svelte';
 	import { v4 as uuid } from '@lukeed/uuid';
-	import Loader from '$lib/Loader.svelte';
+	import Loader from '$components/Loader.svelte';
 	import { fade } from 'svelte/transition';
-	import MapLegend from '$lib/worldMap/MapLegend.svelte';
-	import MapCircles from '$lib/worldMap/MapCircles.svelte';
-	export let data;
-	$: ({result} = data);
+	import MapLegend from '$components/worldMap/MapLegend.svelte';
+	import MapCircles from '$components/worldMap/MapCircles.svelte';
+	export let data: any;
+	$: ({ result } = data);
 	const viewBoxConfig = {
 		minX: 0,
 		minY: 0,
@@ -114,15 +114,15 @@
 
 <SEO title={'Surfers World'} description={'Surfers D3 Map'} />
 
-<div class="flex justify-center align-middle items-center">
+<div class="flex justify-center align-middle items-center w-full h-full">
 	<div
-		class="relative p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600 flex-1 w-full h-auto"
+		class="relative p-4 m-2 rounded shadow bg-base-content flex-1 w-full h-auto text-base-content"
 	>
 		<svg {viewBox}>
-			<path fill="currentColor" d={baseLayout} class="text-indigo-700" />
+			<path fill="currentColor" d={baseLayout} class="text-primary" />
 
 			{#each features as { d }}
-				<path fill="currentColor" stroke="black" class="text-gray-300" {d} in:fade />
+				<path fill="currentColor" stroke="black" class="text-base-content" {d} in:fade />
 			{/each}
 
 			{#if ready}

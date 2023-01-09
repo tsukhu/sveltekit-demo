@@ -42,7 +42,7 @@ export const GET: RequestHandler = async (event) => {
 
 	const { city } = event.params;
 	let error = false;
-	const data: any = await getWeatherForCity(city).catch(() => (error = true));
+	const data: any = await getWeatherForCity(city as string).catch(() => (error = true));
 	if (data.weather !== null) {
 		return json$1({
 			data: data.weather

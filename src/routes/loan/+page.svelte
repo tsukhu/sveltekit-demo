@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import SEO from '$lib/SEO.svelte';
-	import Loan from '$lib/Loan.svelte';
+	import SEO from '$components/SEO.svelte';
+	import Loan from '$components/Loan.svelte';
 	import authStore from '$stores/authStore';
 	let error = false;
 
@@ -17,10 +17,10 @@
 
 <SEO title={'Loan App'} description={'Load Demo App'} />
 
-<div class="flex justify-center align-middle items-center">
-	<div class="p-4 m-2 border border-gray-200 dark:border-gray-500 rounded shadow bg-white dark:bg-gray-600">
+<div class="flex justify-center align-middle items-center ">
+	<div class="rounded p-14 px-24 gap-4 shadow-md bg-base-300">
 		{#if error}
-			<p class="p-2 text-sm text-gray-700 text-center">Please login to view this app</p>
+			<p class="p-2 text-sm text-base-content text-center">Please login to view this app</p>
 		{:else}
 			<Loan />
 		{/if}

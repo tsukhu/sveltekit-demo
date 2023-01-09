@@ -10,7 +10,7 @@ const cities = writable<{
 			lng: string;
 		}
 	];
-}>(null);
+}>();
 
 export default {
 	subscribe: cities.subscribe,

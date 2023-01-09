@@ -1,5 +1,5 @@
 export const prerender = true;
-export async function load({ fetch }) {
+export async function load({ fetch }: any) {
 	let data = {};
 
 	try {

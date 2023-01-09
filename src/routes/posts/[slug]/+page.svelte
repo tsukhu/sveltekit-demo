@@ -1,16 +1,16 @@
 <script>
-	import SEO from '$lib/SEO.svelte';
+	import SEO from '$components/SEO.svelte';
 	export let data;
 	$: ({ post, slug } = data);
 </script>
 
 <SEO title={`Posts/${slug}`} description={`Blog Post:${slug}`} />
 
-<div class="flex justify-center align-middle items-center w-full">
-	<div class="p-4 m-2 border dark:border-gray-500 rounded shadow bg-white dark:bg-green-500 ">
+<div class="flex justify-center w-full">
+	<div class="p-4 m-2 border rounded shadow bg-base-100  ">
 		<a
 			href={`/posts`}
-			class="text-xs dark:hover:text-green-200 hover:text-green-600 flex bg-gray-100 dark:bg-green-900 dark:text-gray-200 align-middle items-center rounded p-2 shadow"
+			class="text-xs bg-neutral flex align-middle items-center rounded p-2 shadow hover:bg-neutral-focus"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-5 w-5"
@@ -25,9 +25,7 @@
 			</svg>
 			<p class="mx-1">All Posts</p></a
 		>
-		<div
-			class="bg-green-50 dark:bg-green-900 dark:text-gray-200 mx-auto m-2 p-1 border border-gray-400 dark:border-gray-700 rounded-md shadow hover:bg-green-300 dark:hover:bg-green-700"
-		>
+		<div class=" mx-auto m-2 p-1 border  rounded-md shadow bg-info-content">
 			<h1 class="font-bold">{post.title}</h1>
 			<p class="italic">{@html post.body}</p>
 		</div>

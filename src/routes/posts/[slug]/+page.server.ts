@@ -1,6 +1,6 @@
 import { api } from '../api';
 export const prerender = true;
-export async function load({ params }) {
+export async function load({ params }: any): Promise<{ post: any; slug: any }> {
 	let post;
 	try {
 		// here we are gonna fetch the single article by id

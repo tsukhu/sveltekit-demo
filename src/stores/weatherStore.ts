@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 const city = writable<{
 	loading?: boolean;
-	result: any;
+	result: unknown;
 }>({
 	loading: false,
 	result: null
@@ -10,6 +10,6 @@ const city = writable<{
 
 export default {
 	subscribe: city.subscribe,
-    update: city.update,
+	update: city.update,
 	set: city.set
 };
