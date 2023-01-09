@@ -37,6 +37,8 @@ This provides a complete set of samples built with SvelteKit and deployed on Ver
 - [x] Parallax Scrolling
 - [x] Basic Form Builder using svelte dynamic components, events and tailwind forms
 - [x] Migrated to vitest
+- [x] Migrated to Svelte v1
+- [x] Used Daisy UI for all styling needs
 
 ## Pre-requisites
 
