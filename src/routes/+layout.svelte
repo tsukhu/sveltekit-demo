@@ -96,7 +96,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex w-full h-full items-center justify-center overflow-y-auto"><slot /></div>
+			<div class="flex w-full h-full items-center justify-center overflow-y-hidden"><slot /></div>
 		</div>
 	</div>
 	<div class="drawer-side">

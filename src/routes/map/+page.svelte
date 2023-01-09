@@ -3,7 +3,7 @@
 	import SEO from '$components/SEO.svelte';
 	import MapComponent from '$components/MapComponent.svelte';
 	import locationStore from '$stores/locationStore';
-	let error;
+	let error: any;
 	let ready: boolean;
 	let myScript;
 	onMount(() => {
@@ -19,7 +19,7 @@
 		};
 	});
 
-	function success(position) {
+	function success(position: { coords: { latitude: any; longitude: any } }) {
 		const lat = position.coords.latitude;
 		const lng = position.coords.longitude;
 		locationStore.set({ lat, lng });
